@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wangjianxin.service.dao.AboutMapper" >
+  <resultMap id="BaseResultMap" type="com.wangjianxin.service.model.About" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="y" property="y" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, y
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from about
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from about
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.wangjianxin.service.model.About" >
+    insert into about (id, y)
+    values (#{id,jdbcType=INTEGER}, #{y,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wangjianxin.service.model.About" >
+    insert into about
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="y != null" >
+        y,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="y != null" >
+        #{y,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wangjianxin.service.model.About" >
+    update about
+    <set >
+      <if test="y != null" >
+        y = y+1,
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+    <update id="countY" parameterType="com.wangjianxin.service.model.About" >
+        update about set
+                y = y+1
+        where id = 1
+    </update>
+  <update id="updateByPrimaryKey" parameterType="com.wangjianxin.service.model.About" >
+    update about
+    set y = #{y,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

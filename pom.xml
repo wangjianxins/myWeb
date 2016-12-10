@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.wangjianxin</groupId>
+    <artifactId>wangjianxin</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>wangjianxin-front</module>
+        <module>service</module>
+    </modules>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <spring.version>4.0.5.RELEASE</spring.version>
+        <commons-lang3.version>3.1</commons-lang3.version>
+        <commons-codec.version>1.6</commons-codec.version>
+        <version.shiro>1.2.2</version.shiro>
+    </properties>
+    <!--<repositories>-->
+        <!--<repository>-->
+            <!--<id>public</id>-->
+            <!--<name>User Project public</name>-->
+            <!--<url>http://101.201.232.250:8081/nexus/content/groups/public</url>-->
+        <!--</repository>-->
+        <!--<repository>-->
+            <!--<id>thirdparty</id>-->
+            <!--<name>User Project thirdparty</name>-->
+            <!--<url>http://101.201.232.250:8081/nexus/content/repositories/thirdparty</url>-->
+        <!--</repository>-->
+    <!--</repositories>-->
+
+
+</project>

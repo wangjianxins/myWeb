@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="wangjianxin-service:war exploded">
+    <output-path>$PROJECT_DIR$/wangjianxin-service/target/wangjianxin-service</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="wangjianxin-service/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="wangjianxin-service" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

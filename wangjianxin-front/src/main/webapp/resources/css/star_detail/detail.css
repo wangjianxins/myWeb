@@ -1,0 +1,82 @@
+.body{
+    font:  "微软雅黑", Arial, Helvetica, sans-serif;
+}
+.left{
+    float: left;
+    padding-top: 40px;
+    padding-left: 100px;
+    width: 300px;
+    height: 250px;
+    text-align:center;
+}
+.left_img{
+    display:block;
+    border-radius:50%;
+    width: 170px ;
+    height:170px;
+}
+.left_div{
+    padding-top: 10px;
+    width: 150px ;
+    height:150px;
+}
+.right{
+
+    padding-top: 40px;
+    padding-left: 300px;
+    height:350px
+
+}
+.right_div{
+    padding-top: 30px;
+    padding-left: 100px;
+}
+/*.right div{*/
+    /*padding-top: 10px;*/
+    /*padding-left: 100px;*/
+    /*height: 100%;*/
+/*}*/
+.mokuai{
+    padding: 5px;
+    text-align:center;
+    background-color: #3498db;
+    border-radius: 5px;
+    color: #fff;
+    width: 150px;
+
+}
+.li{
+    line-height: 28px;
+    height: 28px;
+    overflow: hidden;
+    padding-left: 10px;
+}
+.a{
+    float: left;
+    display: inline-block;
+    margin: 10px 10px 2px 2px;
+    vertical-align: middle;
+    white-space: nowrap;
+    height: 26px;
+    line-height: 26px;
+    text-align: center;
+    padding: 0 10px;
+    border-radius: 3px;
+    background: #eee;
+    color: #666;
+}
+.input {
+    width: 800px;
+    height: 100%;
+    background-color: #fff;
+    -moz-border-radius: 0 0 5px 5px;
+    -webkit-border-radius: 0 0 5px 5px;
+    border-radius: 0 0 5px 5px;
+    position: relative;
+    bottom: 0;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-left: 100px;
+    font: 18px "幼圆", Arial, Helvetica, sans-serif;
+
+}

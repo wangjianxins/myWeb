@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:beans="http://www.springframework.org/schema/beans"
+             xmlns:context="http://www.springframework.org/schema/context"
+             xmlns:tx="http://www.springframework.org/schema/tx"
+             xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+
+    <context:component-scan base-package="com.wangjianxin"/>
+    <context:component-scan base-package="com.google.code.kaptcha"/>
+    <beans:bean id="ServiceLocator" class="com.wangjianxin.util.ServiceLocator"/>
+
+    <!--<beans:bean id="Producer" class="com.google.code.kaptcha.Producer" abstract="true"/>-->
+
+    <beans:bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <beans:property name="locations">
+            <beans:list>
+                <beans:value>classpath:jdbc.properties</beans:value>
+            </beans:list>
+        </beans:property>
+    </beans:bean>
+
+    <context:annotation-config/>
+    <beans:bean id="dataSource" class="org.logicalcobwebs.proxool.ProxoolDataSource">
+        <beans:property name="driver" value="com.mysql.jdbc.Driver"/>
+        <beans:property name="driverUrl" value="${jdbcUrl}" />
+        <beans:property name="user" value="${username}" />
+        <beans:property name="password" value="${password}" />
+        <beans:property name="alias" value="Pool_dbname" />
+        <beans:property name="houseKeepingSleepTime" value="90000" />
+        <beans:property name="prototypeCount" value="0" />
+        <beans:property name="maximumConnectionCount" value="50" />
+        <beans:property name="minimumConnectionCount" value="2" />
+        <beans:property name="simultaneousBuildThrottle" value="50" />
+        <beans:property name="maximumConnectionLifetime" value="14400000" />
+        <beans:property name="houseKeepingTestSql" value="select CURRENT_DATE" />
+    </beans:bean>
+
+    <beans:bean id="sqlSessionFactory"
+                class="org.mybatis.spring.SqlSessionFactoryBean">
+        <beans:property name="dataSource" ref="dataSource"/>
+        <beans:property name="configLocation" value="classpath:mybatis-config.xml"/>
+        <beans:property name="mapperLocations" value="classpath:/mapping/*.xml"/>
+        <beans:property name="typeAliasesPackage" value="com.wangjianxin.service.model"/>
+        <beans:property name="typeAliases" value="org.springframework.util.LinkedCaseInsensitiveMap"/>
+    </beans:bean>
+
+    <beans:bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <beans:property name="basePackage" value="com.wangjianxin.service.dao"/>
+        <beans:property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+    </beans:bean>
+</beans:beans>
