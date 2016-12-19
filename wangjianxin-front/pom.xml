@@ -263,11 +263,11 @@
             <artifactId>gson</artifactId>
             <version>2.3</version>
         </dependency>
-        <dependency>
+        <!-- <dependency>
             <groupId>com.danga</groupId>
             <artifactId>memcached</artifactId>
             <version>2.6.6</version>
-        </dependency>
+        </dependency> -->
         <!--page-->
         <dependency>
             <groupId>com.github.miemiedev</groupId>
