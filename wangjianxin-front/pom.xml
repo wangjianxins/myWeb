@@ -374,9 +374,8 @@
                 <artifactId>tomcat6-maven-plugin</artifactId>
                 <configuration>
                     <url>http://localhost:8080/manager/html</url>
-                    <username>tomcat</username>
-                    <password>tomcat</password>
-                    <server>wang</server>
+                    <server>tomcat</server>
+                    <port>8090</port>
                 </configuration>
             </plugin>
         </plugins>
