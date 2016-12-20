@@ -90,17 +90,17 @@
                     </div>
                 </div>
             </div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-offset-3 col-md-6">
-                        <div class="progress">
-                            <div class="progress-bar progress-bar-info progress-bar-striped active" style="width:10%;">
-                                <div class="progress-value">10%</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <%--<div class="container">--%>
+                <%--<div class="row">--%>
+                    <%--<div class="col-md-offset-3 col-md-6">--%>
+                        <%--<div class="progress">--%>
+                            <%--<div class="progress-bar progress-bar-info progress-bar-striped active" style="width:10%;">--%>
+                                <%--<div class="progress-value">10%</div>--%>
+                            <%--</div>--%>
+                        <%--</div>--%>
+                    <%--</div>--%>
+                <%--</div>--%>
+            <%--</div>--%>
         <div id="demo_content">
             <div id="container" style="width: 700px; height: 300px; margin: 0 auto" data-highcharts-chart="0">
                 <div class="highcharts-container" id="highcharts-0" style="position: relative; overflow: hidden; width: 700px; height: 300px; line-height: normal; z-index: 0; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
@@ -181,6 +181,11 @@
                         </g></svg>
                 </div>
             </div>
+    </div>
+            
+    <div style="text-align:center;margin-top: 50px">
+        本人java开发者，网站建设中<br>
+        联系qq：731461008
     </div>
 
     <script type="text/javascript" src="/resources/js/quxian/bootstrap-dropdown.js"></script>
