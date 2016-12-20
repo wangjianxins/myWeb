@@ -5,6 +5,8 @@ function a(){location.href='/'}
 function b(){location.href='/about.html'}
 function c(){location.href='/star.html'}
 function d(){location.href='/login.html'}
+function m(){location.href='/music.html'}
+
 
 
 //++访问量

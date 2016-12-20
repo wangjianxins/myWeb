@@ -186,6 +186,10 @@ public class IndexController extends MyBaseController{
     public String me() {
         return "/me/me";
     }
+    @RequestMapping(value = "/music.html")
+    public String music() {
+        return "/music/music";
+    }
     @RequestMapping(value = "/404.html")
     public String error() {
         return "404";
