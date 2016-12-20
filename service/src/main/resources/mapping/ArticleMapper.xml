@@ -31,7 +31,7 @@
     </select>
     <select id="paihang" resultType="java.util.Map" parameterType="map" >
         SELECT u.name,SUM(a.zan) AS COUNT
-	    FROM USER u,article a
+	    FROM user u,article a
         WHERE a.user_id = u.id
         GROUP BY a.user_id
         ORDER BY COUNT DESC
