@@ -160,7 +160,7 @@ public final class CookieUtil {
         try {
             Cookie cookie = new Cookie(key, value); //will be throw new IllegalArgumentException(errMsg);
             cookie.setPath("/"); // very important
-            cookie.setDomain("101.201.235.59");
+            cookie.setDomain("www.wangjianxin.top");
             cookie.setMaxAge(expiry);
             response.addCookie(cookie);
             return true;
@@ -174,7 +174,7 @@ public final class CookieUtil {
         try {
             Cookie cookie = new Cookie(key, null);
             cookie.setPath("/"); // very important! but not response 呀。。。
-            cookie.setDomain("101.201.235.59");
+            cookie.setDomain("www.wangjianxin.top");
             cookie.setMaxAge(0);//过期
             response.addCookie(cookie);
             return true;
