@@ -73,7 +73,7 @@
                     $.confirm({
                         animation:'scaleY',
                         content:'<form id="uploadForm" action="/star/create.json" method="post" enctype="multipart/form-data">' +
-                                ' <label>输入星座:</label> ' +
+                                ' <label>输入星座(一个用户只能创建一个):</label> ' +
                                 '<input  type="text" id="star_userid" name="star_userid" value="'+user_id+'" style="display: none">'+
                                 '<input  type="text" id="star_name" name="star_name" placeholder="星座" class="form-control">'+
                                 '<label>输入星座描述(描述不当内容将被删除):</label>'+
@@ -83,21 +83,21 @@
                                 '<label>上传星座图片:</label>'+
                                 '<input  type="file" name="photo" id="photo">' +
                                 '</form>',
-                        title: '创建星座',
+                                title: '创建星座',
                         theme: 'white',
                         contentLoaded: function(data, status, xhr){
                             var self = this;
                             setTimeout(function(){
                             }, 1500);
                         },
-                        confirm: function(){
+                        confirm: function (){
                             if($('#star_name').val() ==0 || $('#star_des').val() ==0 ||
                                     $('#star_time').val() ==0 ||  $('#photo').val() == ''){
                                 $.alert('请填写完整');
                                 return false;
                             }else{
                                 $("#uploadForm").submit();
-//                                    location.href=location.href;
+                                    location.href="/star.html";
                             }
                         },
                         cancel: function (){
@@ -114,7 +114,7 @@
 <div class="container">
     <section id="grid" class="grid clearfix">
         <c:forEach var="starlist" items="${starlist}">
-        <a href="/star/detail.html?id=${starlist.id}" data-path-hover="m 0,0 0,47.7775 c 24.580441,3.12569 55.897012,-8.199417 90,-8.199417 34.10299,0 65.41956,11.325107 90,8.199417 L 180,0 z">
+        <a href="/star/detial/${starlist.id}"  data-path-hover="m 0,0 0,47.7775 c 24.580441,3.12569 55.897012,-8.199417 90,-8.199417 34.10299,0 65.41956,11.325107 90,8.199417 L 180,0 z">
             <figure>
                 <img src="http://101.201.235.59:8087/pic/${starlist.photo}"/>
                 <svg viewBox="0 0 180 320" preserveAspectRatio="none"><path d="m 0,0 0,171.14385 c 24.580441,15.47138 55.897012,24.75772 90,24.75772 34.10299,0 65.41956,-9.28634 90,-24.75772 L 180,0 0,0 z"/></svg>
