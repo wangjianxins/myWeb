@@ -9,4 +9,6 @@ import java.util.List;
 public interface StarManager extends BaseObjectManager<Star,Integer>{
 
     List selectAll();
+
+    List check(int user_id);
 }

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wangjianxin.service.dao.StarTagMapper" >
+  <resultMap id="BaseResultMap" type="com.wangjianxin.service.model.StarTag" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="star_id" property="starId" jdbcType="INTEGER" />
+    <result column="star_tagname" property="starTagname" jdbcType="VARCHAR" />
+    <result column="time" property="time" jdbcType="TIMESTAMP" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, star_id, star_tagname, time, user_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from star_tag
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from star_tag
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.wangjianxin.service.model.StarTag" >
+    insert into star_tag (id, star_id, star_tagname, 
+      time, user_id)
+    values (#{id,jdbcType=INTEGER}, #{starId,jdbcType=INTEGER}, #{starTagname,jdbcType=VARCHAR}, 
+      #{time,jdbcType=TIMESTAMP}, #{userId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wangjianxin.service.model.StarTag" >
+    insert into star_tag
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="starId != null" >
+        star_id,
+      </if>
+      <if test="starTagname != null" >
+        star_tagname,
+      </if>
+      <if test="time != null" >
+        time,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="starId != null" >
+        #{starId,jdbcType=INTEGER},
+      </if>
+      <if test="starTagname != null" >
+        #{starTagname,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null" >
+        #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wangjianxin.service.model.StarTag" >
+    update star_tag
+    <set >
+      <if test="starId != null" >
+        star_id = #{starId,jdbcType=INTEGER},
+      </if>
+      <if test="starTagname != null" >
+        star_tagname = #{starTagname,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null" >
+        time = #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wangjianxin.service.model.StarTag" >
+    update star_tag
+    set star_id = #{starId,jdbcType=INTEGER},
+      star_tagname = #{starTagname,jdbcType=VARCHAR},
+      time = #{time,jdbcType=TIMESTAMP},
+      user_id = #{userId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -36,7 +36,8 @@ public class UserManagerImpl implements UserManager{
 
     @Override
     public User selectByPrimaryKey(Integer id) {
-        return null;
+        User list = userMapper.selectByPrimaryKey(id);
+        return list;
     }
 
     @Override

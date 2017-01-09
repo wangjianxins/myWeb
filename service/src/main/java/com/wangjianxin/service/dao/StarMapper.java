@@ -2,6 +2,8 @@ package com.wangjianxin.service.dao;
 
 import com.wangjianxin.service.model.Star;
 import java.util.List;
+import java.util.Map;
+
 public interface StarMapper {
     int deleteByPrimaryKey(Integer id);
 
@@ -16,4 +18,6 @@ public interface StarMapper {
     int updateByPrimaryKey(Star record);
 
     List selectAll();
+
+    List check(Map map);
 }

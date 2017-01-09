@@ -6,7 +6,9 @@ import com.wangjianxin.service.model.Star;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by wangjianxin on 2016/11/16.
@@ -34,7 +36,8 @@ public class StarManagerImpl implements StarManager{
 
     @Override
     public Star selectByPrimaryKey(Integer id) {
-        return null;
+        Star result = starMapper.selectByPrimaryKey(id);
+        return result;
     }
 
     @Override
@@ -50,6 +53,14 @@ public class StarManagerImpl implements StarManager{
     @Override
     public List selectAll() {
         List result = starMapper.selectAll();
+        return result;
+    }
+
+    @Override
+    public List check(int user_id) {
+        Map<String,Object> map = new HashMap<String, Object>();
+        map.put("user_id",user_id);
+        List result = starMapper.check(map);
         return result;
     }
 }
