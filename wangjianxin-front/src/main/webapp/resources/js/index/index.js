@@ -6,6 +6,7 @@ function b(){location.href='/about.html'}
 function c(){location.href='/star.html'}
 function d(){location.href='/login.html'}
 function m(){location.href='/music.html'}
+function l(){location.href='/link.html'}
 
 
 

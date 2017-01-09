@@ -84,6 +84,7 @@
 						</ul>
 					</li>
 					<li><a class="text-danger" onclick="c()">star</a></li>
+                    <li><a class="text-danger" onclick="l()">link</a></li>
                     <li><a class="text-danger" onclick="m()">music</a></li>
 
                 </ul>

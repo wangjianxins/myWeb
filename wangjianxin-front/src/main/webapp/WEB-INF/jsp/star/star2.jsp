@@ -116,7 +116,7 @@
         <c:forEach var="starlist" items="${starlist}">
         <a href="/star/detail.html?id=${starlist.id}" data-path-hover="m 0,0 0,47.7775 c 24.580441,3.12569 55.897012,-8.199417 90,-8.199417 34.10299,0 65.41956,11.325107 90,8.199417 L 180,0 z">
             <figure>
-                <img src="/resources/images/upload/${starlist.photo}" />
+                <img src="http://101.201.235.59:8087/pic/${starlist.photo}"/>
                 <svg viewBox="0 0 180 320" preserveAspectRatio="none"><path d="m 0,0 0,171.14385 c 24.580441,15.47138 55.897012,24.75772 90,24.75772 34.10299,0 65.41956,-9.28634 90,-24.75772 L 180,0 0,0 z"/></svg>
                 <figcaption>
                     <h2>${starlist.starName}</h2>

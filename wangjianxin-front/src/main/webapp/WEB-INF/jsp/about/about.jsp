@@ -49,6 +49,7 @@
                         </ul>
                     </li>
                     <li><a class="text-danger" onclick="c()">star</a></li>
+                    <li><a class="text-danger" onclick="l()">link</a></li>
                     <li><a class="text-danger" onclick="m()">music</a></li>
 
                 </ul>
@@ -182,7 +183,7 @@
                 </div>
             </div>
     </div>
-            
+
     <div style="text-align:center;margin-top: 50px">
         本人java开发者，网站建设中<br>
         联系qq：731461008

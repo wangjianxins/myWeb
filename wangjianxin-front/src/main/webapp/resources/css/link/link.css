@@ -1,0 +1,24 @@
+.link {
+    outline: none;
+    text-decoration: none;
+    position: relative;
+    font-size: 1em;
+    line-height: 1;
+    color: #9e9ba4;
+    display: inline-bloc;
+}
+.link_center{
+    margin:50px auto; width:400px; height:100px;
+    text-align:center
+}
+.link_center a{
+    line-height:30px;
+    position:relative;
+}
+.link_des{
+    color: #9e9ba4;
+    margin:0px auto;
+    width:400px; height:100px;
+    text-align:center;
+}
+
