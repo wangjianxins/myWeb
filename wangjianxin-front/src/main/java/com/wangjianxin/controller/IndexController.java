@@ -194,4 +194,8 @@ public class IndexController extends MyBaseController{
     public String error() {
         return "404";
     }
+    @RequestMapping(value = "/link.html")
+    public String link() {
+        return "link/link";
+    }
 }

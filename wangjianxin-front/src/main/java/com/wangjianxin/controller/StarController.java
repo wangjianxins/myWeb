@@ -61,7 +61,7 @@ public class StarController extends MyBaseController {
                     fileNewName = uploadUtil.generateFileName(file.getOriginalFilename());
                     //上传
                     try {
-                        String path = "/usr/local/tomcat/apache-tomcat-7.0.39/webapps/wangjianxin-front/src/main/webapp/resources/images/upload/"+fileNewName;
+                        String path = "/www/img/pic/"+fileNewName;
                         newfile.transferTo(new File(path));//存原图
                     } catch (IOException e) {
                         e.printStackTrace();
