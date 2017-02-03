@@ -23,4 +23,6 @@ public interface UserMapper {
     List check(String email);
 
     List getName(int user_id);
+
+    List checkName(String name);
 }

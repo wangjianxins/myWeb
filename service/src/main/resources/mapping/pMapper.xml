@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wangjianxin.service.dao.pMapper" >
+  <resultMap id="BaseResultMap" type="com.wangjianxin.service.model.P" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="p_title" property="pTitle" jdbcType="VARCHAR" />
+    <result column="p_context" property="pContext" jdbcType="VARCHAR" />
+    <result column="look" property="look" jdbcType="INTEGER" />
+    <result column="favour" property="favour" jdbcType="INTEGER" />
+      <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
+
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, user_id, p_title, p_context, look, favour,createtime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from p
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+    <select id="initp" resultType="java.util.Map" parameterType="map" >
+        select
+         p.createtime as time,
+        p.id,p.p_title,p.p_context,p.look,p.favour,u.name,u.photo,u.id as user_id
+        from p p,user u
+        where p.user_id = u.id
+        ORDER BY p.look DESC,p.createtime desc
+        limit #{pagenum},#{pagesize}
+    </select>
+    <select id="pcount" resultType="java.lang.Integer">
+        select
+     count(id)
+     from p
+    </select>
+    <select id="howword" resultType="java.util.List" parameterType="java.lang.Integer">
+      SELECT id,p_context FROM p WHERE user_id = #{user_id}
+    </select>
+    <select id="recommend" resultType="java.util.Map">
+       SELECT p.user_id,u.name ,u.photo,COUNT(p.id) AS pcount
+FROM p p,USER u
+WHERE p.user_id = u.id
+GROUP BY user_id ORDER BY pcount desc
+limit 0,5
+    </select>
+    <select id="checkNum" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+        select count(id)
+        from p where user_id = #{user_id}
+    </select>
+    <select id="likenum" resultType="java.lang.Integer" parameterType="java.lang.Integer">
+        select favour from p where id = #{p_id}
+    </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from p
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.wangjianxin.service.model.P" >
+    insert into p (id, user_id, p_title, 
+      p_context, look, favour
+      )
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{pTitle,jdbcType=VARCHAR}, 
+      #{pContext,jdbcType=VARCHAR}, #{look,jdbcType=INTEGER}, #{favour,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.wangjianxin.service.model.P" >
+    insert into p
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="pTitle != null" >
+        p_title,
+      </if>
+      <if test="pContext != null" >
+        p_context,
+      </if>
+      <if test="look != null" >
+        look,
+      </if>
+      <if test="favour != null" >
+        favour,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="pTitle != null" >
+        #{pTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="pContext != null" >
+        #{pContext,jdbcType=VARCHAR},
+      </if>
+      <if test="look != null" >
+        #{look,jdbcType=INTEGER},
+      </if>
+      <if test="favour != null" >
+        #{favour,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wangjianxin.service.model.P" >
+    update p
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="pTitle != null" >
+        p_title = #{pTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="pContext != null" >
+        p_context = #{pContext,jdbcType=VARCHAR},
+      </if>
+      <if test="look != null" >
+        look = #{look,jdbcType=INTEGER},
+      </if>
+      <if test="favour != null" >
+        favour = #{favour,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wangjianxin.service.model.P" >
+    update p
+    set user_id = #{userId,jdbcType=INTEGER},
+      p_title = #{pTitle,jdbcType=VARCHAR},
+      p_context = #{pContext,jdbcType=VARCHAR},
+      look = #{look,jdbcType=INTEGER},
+      favour = #{favour,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+    <update id="look" parameterType="java.lang.Integer">
+        update p
+        set look = look + 1
+        where id = #{p_id}
+    </update>
+    <update id="favour" parameterType="map">
+        update p
+        set
+            <if test = "type == 1">
+             favour = favour +1
+            </if>
+            <if test = "type == 2">
+               favour =  favour -1
+            </if>
+        where id =#{p_id}
+    </update>
+    <!--<update id="updateFavour" parameterType="map">-->
+        <!--update p-->
+        <!--set-->
+          <!--<if test="type == 1">-->
+              <!--flag = 0-->
+          <!--</if>-->
+          <!--<if test="type ==2">-->
+              <!--flag = 1-->
+          <!--</if>-->
+        <!--where user_id = #{user_id}-->
+        <!--and p_id = #{p_id}-->
+    <!--</update>-->
+</mapper>

@@ -7,9 +7,11 @@
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="pass" property="pass" jdbcType="VARCHAR" />
     <result column="money" property="money" jdbcType="INTEGER" />
+      <result column="photo" property="photo" jdbcType="VARCHAR" />
+
   </resultMap>
   <sql id="Base_Column_List" >
-    id, email, name, pass, money
+    id, email, name, pass, money,photo
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -17,6 +19,12 @@
     from user
     where id = #{id,jdbcType=INTEGER}
   </select>
+    <select id="checkName" resultMap="BaseResultMap" parameterType="java.lang.String" >
+        select
+        id,email
+        from user
+        where name = #{name,jdbcType=VARCHAR}
+    </select>
     <select id="getName" resultType="java.util.Map" parameterType="java.lang.Integer" >
         select
         id,name,money,email
@@ -64,6 +72,9 @@
       <if test="money != null" >
         money,
       </if>
+        <if test="photo != null" >
+            photo,
+        </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -81,6 +92,9 @@
       <if test="money != null" >
         #{money,jdbcType=INTEGER},
       </if>
+        <if test="photo != null" >
+            #{photo,jdbcType=VARCHAR},
+        </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.wangjianxin.service.model.User" >
@@ -98,6 +112,9 @@
       <if test="money != null" >
         money = #{money,jdbcType=INTEGER},
       </if>
+        <if test="photo != null" >
+            money = #{photo,jdbcType=VARCHAR},
+        </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>

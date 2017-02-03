@@ -13,4 +13,6 @@ public interface UserManager extends BaseObjectManager<User,Integer>{
     List check(String email);
 
     List getName(int user_id);
+
+    List checkName(String name);
 }

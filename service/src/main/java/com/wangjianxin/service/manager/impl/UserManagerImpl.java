@@ -70,4 +70,10 @@ public class UserManagerImpl implements UserManager{
         List list = userMapper.getName(user_id);
         return list;
     }
+
+    @Override
+    public List checkName(String name) {
+        List list = userMapper.checkName(name);
+        return list;
+    }
 }
