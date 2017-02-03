@@ -1,0 +1,235 @@
+.PMain {
+    max-width: 600px;
+}
+.Input_Box {
+    width: 100%;
+    min-height: 160px;
+    border: 1px solid #ccc;
+    transition: border linear .2s, box-shadow linear .5s;
+    -moz-transition: border linear .2s, -moz-box-shadow linear .5s;
+    -webkit-transition: border linear .2s, -webkit-box-shadow linear .5s;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    background-color: #fff;
+    overflow: hidden;
+    -moz-box-shadow: 0 0 5px #ccc;
+    -webkit-box-shadow: 0 0 5px #ccc;
+    box-shadow: 0 0 5px #ccc;
+}
+.title_input{
+    font-size: 30px;
+    display:block;position:relative;border:1px;width:50%;min-height:90px;margin:10px auto
+}
+/*为空时显示 element attribute content*/
+.title_input:empty:before{
+    content: attr(placeholder);   /* element attribute*/
+    /*content: 'this is content';*/
+    color:#9d9d9d;
+}
+/*焦点时内容为空*/
+.title_input:focus:before{
+    content:none;
+}
+.p_list{
+    float: left;
+    position: relative;
+    width: 620px;
+    margin: 70px 150px 17px;
+    padding: 0 2px 17px 0;
+    /*border-bottom: 1px solid #f0f0f0;*/
+    word-wrap: break-word;
+}
+
+.author{
+    margin-bottom: 14px;
+    font-size: 13px;
+}
+.avatar{
+    display: inline-block;
+    vertical-align: middle;
+}
+.avatar img{
+    vertical-align: middle;
+    width: 32px;
+    height: 32px;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+}
+.name{
+    display: inline-block;
+    vertical-align: middle;
+
+}
+.name span{
+    text-decoration: none;
+    padding-left: 7px;
+    color: #969696;
+    vertical-align: middle;
+    font-size: 18px;
+
+}
+.name a{
+    padding-left: 5px;
+    vertical-align: middle;
+    color: #333;
+    cursor: pointer;
+}
+.title{
+    margin: -7px 0 4px;
+    display: inherit;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.5;
+    cursor: pointer;
+    color: #333;
+}
+.context{
+    margin: 0 0 8px;
+    font-size: 14px;
+    line-height: 24px;
+
+}
+.meta{
+    padding-right: 0!important;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 20px;
+}
+.meta a{
+    margin-right: 10px;
+}
+.iconfont{
+    font-family: iconfont!important;
+    font-size: inherit;
+    font-style: normal;
+    font-weight: 400!important;
+    -webkit-font-smoothing: antialiased;
+    color: #b4b4b4;
+}
+.recommend{
+    float: right;
+    width:200px;
+    margin-right: 150px;
+    margin-top: 70px;
+    margin-bottom: 20px;
+    padding-top: 0;
+    font-size: 13px;
+    text-align: center;
+}
+.rec_title{
+    text-align: left;
+}
+.recommend span{
+    font-size: 14px;
+    color: #969696;
+}
+.rec_list{
+    margin: 0 0 20px;
+    text-align: left;
+    list-style: none;
+}
+.rec_li{
+    margin-top: 15px;
+    line-height: 20px;
+}
+.rec_li .avatar{
+    float: left;
+    width: 48px;
+    height: 48px;
+    margin-right: 10px;
+}
+.rec_li .avatar img{
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+}
+.rec_li .follow{
+    cursor: pointer;
+    float: right;
+    margin-top: 5px;
+    padding: 0;
+    font-size: 12px;
+    color: #42c02e;
+}
+.rec_li .rec_name{
+    cursor: pointer;
+    padding-top: 5px;
+    margin-right: 60px;
+    font-weight: 700;
+    display: block;
+}
+.rec_li p{
+    margin-top: 2px;
+    font-size: 12px;
+    color: #969696;
+}
+.ic-follow{
+    font-family: iconfont!important;
+    font-style: normal;
+    font-weight: 400!important;
+    -webkit-font-smoothing: antialiased;
+
+}
+.border{
+    padding-bottom: 10px;
+    border-bottom: 1px solid #f0f0f0;
+    margin-top: 10px;
+}
+.load-more{
+    width: 100%;
+    height: 40px;
+    margin: 30px auto 60px;
+    padding: 10px 15px;
+    text-align: center;
+    font-size: 15px;
+    border-radius: 4px;
+    color: #fff;
+    background-color: #a5a5a5;
+    display: block;
+    background-color: #a5a5a5;
+}
+.write_a{
+    margin: 9px 15px 0;
+    border-radius: 4px;
+    color: #fff;
+    background-color: #ea6f5a;
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857;
+}
+.write_a .ic{
+    box-sizing: border-box;
+}
+.fabu{
+    float: right;
+    /*margin-bottom: 50px;*/
+    margin: 20px 70px 50px;
+    border-radius: 4px;
+    color: #fff;
+    background-color: #ea6f5a;
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: 6px 12px;
+    font-size: 20px;
+    line-height: 1.42857;
+}
+
+
+
+
+

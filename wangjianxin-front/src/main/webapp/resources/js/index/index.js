@@ -7,6 +7,8 @@ function c(){location.href='/star.html'}
 function d(){location.href='/login.html'}
 function m(){location.href='/music.html'}
 function l(){location.href='/link.html'}
+function p(){location.href='/p/p.htm'}
+function updatePhtot(){location.href='/me.html'}
 
 
 
@@ -27,17 +29,30 @@ $.ajax({
     type:"get",
     success: function (data) {
         if(data.a == 1){
+            $('#photo').hide();
             $('#login_name').hide();
             $("#username").text(data.b);
             $("#username").addClass("text-primary");
         }else{
+            $('#photo').show();
             $('#user_id').val(data.c);
             $('#login_names').hide();
             $('#login_name').show();
             $("#username").text(data.b)
+            $.ajax({
+                url:"/me/getInfo.json",
+                data:{
+                    user_id:$('#user_id').val()
+                },
+                success:function(data){
+                    $('#photo').attr('src','http://101.201.235.59:8087/pic/'+data.photo+'');
+                }
+
+            })
         }
     }
 })
+
 function getWord(){
     $.ajax({
         url:"/getWord.json",

@@ -17,7 +17,7 @@
 		<div class="row">
 			<div id="crop-avatar" class="col-md-6">
 				<div class="avatar-view" title="Change Logo Picture">
-			    	<img src="/resources/images/avatar.png" alt="Logo">
+			    	<img src="" alt="Logo" id="me_img">
 			    </div>
 			</div>
 		</div>
@@ -72,7 +72,12 @@
 <div class="loading" aria-label="Loading" role="img" tabindex="-1"></div>
 
 <script>
-
+    $.ajax({
+     url:'/me/initPhtot.json'
+        ,success:function(data){
+                $('#me_img').attr('src','http://101.201.235.59:8087/pic/'+data);
+        }
+    })
 </script>
 </body>
 </html>

@@ -194,7 +194,7 @@ a:focus {
     float: right !important; }
     .sui-nav.horizontal .sui-nav-wrapper > ul.pull-right > li > ul,
     .sui-nav.horizontal .sui-nav-wrapper-fluid > ul.pull-right > li > ul {
-      right: 0;
+      right:0;
       left: auto; }
       .sui-nav.horizontal .sui-nav-wrapper > ul.pull-right > li > ul > li ul,
       .sui-nav.horizontal .sui-nav-wrapper-fluid > ul.pull-right > li > ul > li ul {

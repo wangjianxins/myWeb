@@ -51,6 +51,15 @@
 					padding: 0px;
 				}
 			}
+            /*头像*/
+            .avator{
+                /*display: block;*/
+                float: right;
+                margin:5px;
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+            }
 		</style>
 	</head>
 
@@ -59,7 +68,9 @@
 			<div class="sui-nav-wrapper nav-border nav-line">
 				<ul>
 					<li><a class="text-primary" onclick="a()"><span class="glyphicon glyphicon-home"></span> 主页</a></li>
-					<li><a href="#" class="text-primary" onclick="b()"> 关于</a>
+                    <li><a class="text-primary" onclick="p()"><span></span> article</a></li>
+
+                    <li><a href="#" class="text-primary" onclick="b()">about</a>
 						<ul>
 							<li><a href="#"><span class="glyphicon glyphicon-edit"></span> editor</a></li>
 							<li><a href="#"><span class="glyphicon glyphicon-pencil"></span> pencil</a></li>
@@ -86,17 +97,19 @@
 					<li><a class="text-danger" onclick="c()">star</a></li>
                     <li><a class="text-danger" onclick="l()">link</a></li>
                     <li><a class="text-danger" onclick="m()">music</a></li>
-
                 </ul>
 
                 <ul class="pull-right" id="login_names">
-                    <li><a class="text-primary" onclick="d()">登录</a>
+                    <li>
+                        <a class="text-primary" onclick="d()" >登录</a>
                     </li>
                 </ul>
+
                 <input type="text" id="user_id" style="display: none"/>
 				<ul class="pull-right" id="login_name">
 					<li><a id="username" class="text-primary"></a>
-                            <ul>
+                        <img  class="avator" src="" id="photo" onclick="updatePhtot()"/>
+                        <ul>
                                 <li><a onclick="quit()">注销登录</a></li>
                                 <li><a>修改密码</a></li>
                                 <li><a>我的消息</a></li>

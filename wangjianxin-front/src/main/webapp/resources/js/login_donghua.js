@@ -45,12 +45,20 @@ $(function(){
     $("input[name]").focusout(function(e){
         var msg="";
         if($.trim($(this).val())==""){
-            if($(this).attr('name')=='userName'){
+            if($(this).attr('name')=='reg_email'){
                 succ_arr[0]=false;
-                msg="登入名为空";
-            }else if($(this).attr('name')=='pass'){
+                msg="邮箱为空";
+            }else if($(this).attr('name')=='reg_pass'){
                 succ_arr[1]=false;
                 msg="密码为空";
+            }
+            else if($(this).attr('name')=='reg_name'){
+                succ_arr[1]=false;
+                msg="昵称为空";
+            }
+            else if($(this).attr('name')=='reg_ma'){
+                succ_arr[1]=false;
+                msg="验证码为空";
             }
         }else{
             if($(this).attr('name')=='userName'){
