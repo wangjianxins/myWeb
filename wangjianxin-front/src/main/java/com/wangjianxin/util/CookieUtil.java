@@ -34,8 +34,13 @@ public final class CookieUtil {
     }
     //赞砸收藏cookie
     public static boolean setFavorCookie(HttpServletResponse response, String user_ip,String code,int expiry) {
-        String cookieValue = CookieUtil.generateCookieValueToFavor(user_ip, code);
+        String cookieValue = CookieUtil.generateCookieValueToFavor(user_ip,code);
         return cookieValue != null && CookieUtil.setCookie(response, COOKIE_KEY_FAVOR, cookieValue, expiry);
+    }
+    //验证码cookie
+    public static boolean setMaCookie(HttpServletResponse response, String user_ip,String code,int expiry) {
+        String cookieValue = CookieUtil.generateCookieValueToFavor(user_ip,code);
+        return cookieValue != null && CookieUtil.setCookie(response, COOKIE_KEY_FAVOR, cookieValue, 300);
     }
 
     //登录后
@@ -61,8 +66,9 @@ public final class CookieUtil {
         StringBuilder sb = new StringBuilder();
 
         sb.append(base64Encode(user_ip + "")).append(SPLITER)
-                .append(base64Encode("A")).append(SPLITER);
-        sb.append(code);
+                .append(base64Encode("A")).append(SPLITER)
+        .append(base64Encode(code)).append(SPLITER);
+
         String sign = MD5(sb.toString() + CPS_USER_KEY);
         sb.append(SPLITER).append(sign);
         try {
@@ -109,12 +115,39 @@ public final class CookieUtil {
             user.setEmail(base64Decode(strs[3]));
 //            user.setStatus(Integer.valueOf(base64Decode(strs[4])));
             return user;
-
         }
-
         return null;
     }
 
+
+    public static String getMaFromCookie(HttpServletRequest request) {
+        String cookieValue = CookieUtil.getCookie(request, COOKIE_KEY_FAVOR);
+        if (null != cookieValue) {
+            try {
+                cookieValue = URLDecoder.decode(cookieValue, DEFAULT_CHARSET);
+            } catch (UnsupportedEncodingException e) {
+                return null;
+            }
+        } else {
+            return null;
+        }
+        String[] strs = cookieValue.split("\\|");
+        if (strs.length <5) {
+            return null;
+        }
+        StringBuffer sb = new StringBuffer();
+        sb.append(strs[0]).append(SPLITER).append(strs[1]).append(SPLITER)
+                .append(strs[2]).append(SPLITER).append(strs[3]);
+        String sign = MD5(sb.toString() + CPS_USER_KEY);
+        if (sign.equals(strs[4])){
+//            System.out.println(base64Decode(strs[0])); 123.118.93.220
+//            System.out.println(base64Decode(strs[1])); A
+//            System.out.println(base64Decode(strs[4]));!w����tqA�]��~9�{�
+//            System.out.println(base64Decode(strs[2])); 验证码
+            return base64Decode(strs[2]);
+        }
+        return null;
+    }
 
     public static User getUserfromCookieValue(String cookieValue) {
         if (null != cookieValue) {
@@ -160,7 +193,7 @@ public final class CookieUtil {
         try {
             Cookie cookie = new Cookie(key, value); //will be throw new IllegalArgumentException(errMsg);
             cookie.setPath("/"); // very important
-            cookie.setDomain("www.wangjianxin.top");
+            cookie.setDomain("localhost");
             cookie.setMaxAge(expiry);
             response.addCookie(cookie);
             return true;
@@ -174,7 +207,7 @@ public final class CookieUtil {
         try {
             Cookie cookie = new Cookie(key, null);
             cookie.setPath("/"); // very important! but not response 呀。。。
-            cookie.setDomain("www.wangjianxin.top");
+            cookie.setDomain("localhost");
             cookie.setMaxAge(0);//过期
             response.addCookie(cookie);
             return true;

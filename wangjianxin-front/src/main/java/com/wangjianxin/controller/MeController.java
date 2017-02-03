@@ -1,10 +1,14 @@
 package com.wangjianxin.controller;
 
+import com.wangjianxin.service.manager.UserManager;
+import com.wangjianxin.service.model.User;
+import com.wangjianxin.util.CookieUtil;
 import com.wangjianxin.util.CutImgUtil;
 import com.wangjianxin.util.UploadImagesConfImpl;
 import com.wangjianxin.util.UploadUtil;
 import net.sf.json.JSONObject;
 import org.apache.shiro.authz.annotation.RequiresAuthentication;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +18,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.text.DecimalFormat;
@@ -26,7 +31,19 @@ import java.util.Iterator;
 @RequestMapping("/me")
 public class MeController extends MyBaseController {
 
+    @Autowired
+    private UserManager userManager;
 
+    @RequestMapping("/initPhtot.json")
+    @ResponseBody
+    public String initPhoto(HttpServletRequest request){
+        User user = CookieUtil.getUserFromCookie(request);
+        User result = userManager.selectByPrimaryKey(user.getId());
+        String photo = result.getPhoto();
+//        System.out.print(user);
+
+        return toJson(photo);
+    }
     @RequiresAuthentication
     @ResponseBody
     @RequestMapping(value = "/uploadByArticle.json", method = RequestMethod.POST)
@@ -70,13 +87,17 @@ public class MeController extends MyBaseController {
                 if(file!=null)
                 {
                     fileNewName = uploadUtil.generateFileName(file.getOriginalFilename());
-
                     //上传
                     try {
-                        String path = "C:/Users/wangjianxin/Desktop/img/"+fileNewName;
+                        String path = "/www/img/pic/"+fileNewName;
                         newfile.transferTo(new File(path));//存原图
                         CutImgUtil cutImgUtil = new CutImgUtil();
                         cutImgUtil.cutImage(path,path,x_,y_,height_,width_);
+                        User user = CookieUtil.getUserFromCookie(request);
+                            User s = new User();
+                                s.setId(user.getId());
+                                s.setPass(fileNewName);
+                             userManager.updateByPrimaryKey(s);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -84,5 +105,13 @@ public class MeController extends MyBaseController {
             }
         }
         return fileNewName;
+    }
+
+
+    @RequestMapping("/getInfo.json")
+    @ResponseBody
+    public String getInfo(@RequestParam(value = "user_id") int user_id){
+      User list =   userManager.selectByPrimaryKey(user_id);
+        return toJson(list);
     }
 }
