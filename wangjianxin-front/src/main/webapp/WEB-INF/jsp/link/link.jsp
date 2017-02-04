@@ -54,6 +54,8 @@
     <a class="link" href="javascript:void(0)" onclick="bolg('http://lfei.org/')" data-letters="fly">fly</a><br>
     <a class="link" href="javascript:void(0)" onclick="bolg('http://www.keen8.com/')" data-letters="keen8">keen8</a><br>
     <a class="link" href="javascript:void(0)" onclick="bolg('http://blog.m1910.com/')" data-letters="小左闲谈 ">小左闲谈 </a><br>
+    <a class="link" href="javascript:void(0)" onclick="bolg('http://www.chinahackcn.com/')" data-letters="龙哥博客 ">龙哥博客 </a><br>
+
 </div>
 
 <div class="link_des">
