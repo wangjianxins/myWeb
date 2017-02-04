@@ -39,7 +39,7 @@
     </select>
     <select id="recommend" resultType="java.util.Map">
        SELECT p.user_id,u.name ,u.photo,COUNT(p.id) AS pcount
-FROM p p,USER u
+FROM p p,user u
 WHERE p.user_id = u.id
 GROUP BY user_id ORDER BY pcount desc
 limit 0,5
