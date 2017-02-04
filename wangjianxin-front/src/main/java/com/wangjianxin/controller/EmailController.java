@@ -44,6 +44,7 @@ public class EmailController extends MyBaseController{
             String code = getRandomString(5);
             //注册验证码cookie
             boolean cookieresult =  CookieUtil.setMaCookie(response, user_ip,code, CookieUtil.COOKIE_LIVE_EXPIRY);
+            System.out.print("yanzhengma 验证码："+cookieresult);
             StringBuilder sb = new StringBuilder("来自wangjianxin.top验证码：<br/><br/>");
             sb.append("<h1>"+code+"<h1/><br/>");
             sb.append("请复制");
@@ -63,7 +64,7 @@ public class EmailController extends MyBaseController{
         mailInfo.setContent(content);
         logger.debug(".mailInfo  " + subject + " from " + mailInfo.getFromAddress() + " to" + mailInfo.getToAddress() + " host " + mailInfo.getMailServerHost() +
                 "port  " + mailInfo.getMailServerPort());
-        SimpleMailSender sms = new SimpleMailSender();
+//        SimpleMailSender sms = new SimpleMailSender();
 //        sms.sendTextMail(mailInfo)
         if(SimpleMailSender.sendHtmlMail(mailInfo)){
             return toJson(99);
