@@ -23,7 +23,7 @@
             <img class="left_img" src="http://101.201.235.59:8087/pic/${star.photo}" />
             <div class="left_div">
                 <div>${star.starName}</div>
-                <div><fmt:formatDate value="${star.starTime}" type="date"/></div>
+                <div>${star.starTime}</div>
             </div>
         </div>
     </div>
