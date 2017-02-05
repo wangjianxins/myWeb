@@ -49,7 +49,7 @@
     <div class="like" onclick="favour(${p.id})" id="like">
         <div class="like_btn">
             <a>
-                <i class="ic" id="like_btn"></i>
+                <i class="ic" id="like_btn">喜欢</i>
             </a>
         </div>
         <div class="modal_w">

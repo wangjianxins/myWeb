@@ -50,11 +50,16 @@ public class ConstantUtil {
             e.printStackTrace();
         }
         WEBAPP_URL = getProperty("webapp.url", "").trim();
-        WEBAPP_EMAIL = getProperty("webapp.service.email", "").trim();
-        WEBAPP_EMAIL_PW = getProperty("webapp.service.email.pw", "").trim();
-        WEBAPP_EMAIL_SMTP = getProperty("webapp.service.email.smtp", "").trim();
-        WEBAPP_EMAIL_PORT = getProperty("webapp.service.email.port", "").trim();
-        WEBAPP_COOKIE_DOMAIN = getProperty("webapp.cookie.domail", "www.wangjianxin.top").trim();
+        WEBAPP_EMAIL = "731461008@qq.com";
+        WEBAPP_EMAIL_PW = "xhimoribbzfwbeaj";
+//        WEBAPP_EMAIL = getProperty("webapp.service.email", "").trim();
+//        WEBAPP_EMAIL_PW = getProperty("webapp.service.email.pw", "").trim();
+        WEBAPP_EMAIL_SMTP = "smtp.qq.com";
+//        WEBAPP_EMAIL_SMTP = getProperty("webapp.service.email.smtp", "").trim();
+        WEBAPP_EMAIL_PORT = "587";
+//        WEBAPP_EMAIL_PORT = getProperty("webapp.service.email.port", "").trim();
+//        WEBAPP_COOKIE_DOMAIN = getProperty("webapp.cookie.domail", "www.wangjianxin.top").trim();
+        WEBAPP_COOKIE_DOMAIN ="www.wangjianxin.top";
 //        COOKIE_SEARCH_PARAM_EXPIRY = getProperty("cookie.search.param.expiry", "");
 
 
