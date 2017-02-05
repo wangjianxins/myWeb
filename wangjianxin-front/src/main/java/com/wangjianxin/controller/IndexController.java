@@ -63,7 +63,7 @@ public class IndexController extends MyBaseController{
     public  String reg(@RequestParam(value = "email") String email,
                       @RequestParam(value = "pass") String pass,
                       @RequestParam(value = "name") String name,
-                      @RequestParam(value = "ma") String ma,
+//                      @RequestParam(value = "ma") String ma,
                       HttpServletResponse response,
                       HttpServletRequest request){
         List list = userManager.check(email);
@@ -76,7 +76,7 @@ public class IndexController extends MyBaseController{
                 result = 97;
             }else{
                 //验证码
-                if(CookieUtil.getMaFromCookie(request).equals(ma)){
+//                if(CookieUtil.getMaFromCookie(request).equals(ma)){
                     User user = new User();
                     user.setEmail(email);
                     user.setPass(pass);
@@ -84,9 +84,9 @@ public class IndexController extends MyBaseController{
                     result = userManager.insertSelective(user);
                     User cookieuser = userManager.login(email,pass);
                     boolean cookieresult =  CookieUtil.setUserCookie(response, cookieuser, CookieUtil.COOKIE_LIVE_EXPIRY);
-                }else{
-                    result = 96;
-                }
+//                }else{
+//                    result = 96;
+//                }
             }
         }
         return toJson(result);
