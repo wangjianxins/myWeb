@@ -64,9 +64,9 @@ public class EmailController extends MyBaseController{
         mailInfo.setContent(content);
         logger.debug(".mailInfo  " + subject + " from " + mailInfo.getFromAddress() + " to" + mailInfo.getToAddress() + " host " + mailInfo.getMailServerHost() +
                 "port  " + mailInfo.getMailServerPort());
-//        SimpleMailSender sms = new SimpleMailSender();
+        SimpleMailSender sms = new SimpleMailSender();
 //        sms.sendTextMail(mailInfo)
-        if(SimpleMailSender.sendHtmlMail(mailInfo)){
+        if(sms.sendHtmlMail(mailInfo)){
             return toJson(99);
         }else{
             return toJson(98);
