@@ -23,8 +23,8 @@ function reg(){
   var email = $('#reg_email').val();
   var pass =   $('#reg_pass').val();
   var name =  $('#reg_name').val();
-    var ma =  $('#reg_ma').val();
-    if(email.length>0 && pass.length>0 && name.length>0 && ma.length>0){
+//    var ma =  $('#reg_ma').val();
+    if(email.length>0 && pass.length>0 && name.length>0){
         if(emailCheck(email)){
             $.ajax({
                 url:"/reg.json",
@@ -33,7 +33,7 @@ function reg(){
                     email:$('#reg_email').val(),
                     pass:$('#reg_pass').val(),
                     name:$('#reg_name').val(),
-                    ma:$('#reg_ma').val()
+//                    ma:$('#reg_ma').val()
                 },
                 success: function (data) {
                     if(data == 1){
