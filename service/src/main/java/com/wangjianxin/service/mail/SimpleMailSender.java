@@ -64,7 +64,7 @@ public class SimpleMailSender {
      *
      * @param mailInfo 待发送的邮件信息
      */
-    public static boolean sendHtmlMail(MailSenderInfo mailInfo) {
+    public  boolean sendHtmlMail(MailSenderInfo mailInfo) {
         // 判断是否需要身份认证
         MyAuthenticator authenticator = null;
         Properties pro = mailInfo.getProperties();
@@ -117,26 +117,26 @@ public class SimpleMailSender {
     }
 
 
-    public static void main(String[] args) {
-        Calendar calendar = Calendar.getInstance();//获取当前时间
-        calendar.add(Calendar.DAY_OF_YEAR, -2);
-        System.out.println(calendar.getTime());
-        //这个类主要是设置邮件
-        MailSenderInfo mailInfo = new MailSenderInfo();
-        mailInfo.setMailServerHost("smtp.exmail.qq.com");
-        mailInfo.setMailServerPort("25");
-        mailInfo.setValidate(true);
-
-        mailInfo.setUserName("zhaobk@etripworld.com");
-        mailInfo.setPassword("hou123");//您的邮箱密码
-        mailInfo.setFromAddress("zhaobk@etripworld.com");
-        mailInfo.setToAddress("zhaobk@etripworld.com");
-        mailInfo.setSubject("尚之旅同行采购系统用户注册确认");
-        mailInfo.setContent("请点击一下连接注册确认！");
-        //这个类主要来发送邮件
-        SimpleMailSender sms = new SimpleMailSender();
-        sms.sendTextMail(mailInfo);//发送文体格式
-        //  sms.sendHtmlMail(mailInfo);//发送html格式
-    }
+//    public static void main(String[] args) {
+//        Calendar calendar = Calendar.getInstance();//获取当前时间
+//        calendar.add(Calendar.DAY_OF_YEAR, -2);
+//        System.out.println(calendar.getTime());
+//        //这个类主要是设置邮件
+//        MailSenderInfo mailInfo = new MailSenderInfo();
+//        mailInfo.setMailServerHost("smtp.exmail.qq.com");
+//        mailInfo.setMailServerPort("25");
+//        mailInfo.setValidate(true);
+//
+//        mailInfo.setUserName("zhaobk@etripworld.com");
+//        mailInfo.setPassword("hou123");//您的邮箱密码
+//        mailInfo.setFromAddress("zhaobk@etripworld.com");
+//        mailInfo.setToAddress("zhaobk@etripworld.com");
+//        mailInfo.setSubject("尚之旅同行采购系统用户注册确认");
+//        mailInfo.setContent("请点击一下连接注册确认！");
+//        //这个类主要来发送邮件
+//        SimpleMailSender sms = new SimpleMailSender();
+//        sms.sendTextMail(mailInfo);//发送文体格式
+//        //  sms.sendHtmlMail(mailInfo);//发送html格式
+//    }
 
 }
