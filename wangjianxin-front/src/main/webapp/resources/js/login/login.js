@@ -32,7 +32,7 @@ function reg(){
                 data:{
                     email:$('#reg_email').val(),
                     pass:$('#reg_pass').val(),
-                    name:$('#reg_name').val(),
+                    name:$('#reg_name').val()
 //                    ma:$('#reg_ma').val()
                 },
                 success: function (data) {
