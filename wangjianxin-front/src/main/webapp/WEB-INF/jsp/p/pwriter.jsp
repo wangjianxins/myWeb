@@ -36,6 +36,7 @@
 </div>
 <div contenteditable="true" id="title" class="title_input" placeholder="写入文章标题"></div>
 <div onmousedown="show_element(event)" style="clear:both" id="customized-buttonpane" class="editor" ></div>
+<div contenteditable="true" onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" id="article_tag" class="title_input" placeholder="添加一个文章标签（中文小于四个字）"></div>
 <div onclick="fabu()" class="fabu">发布文章</div>
 <div class="fabu" style="float: left">欢迎连载哦，后期会有悬赏打赏功能，暂时文章不能上传图片，编辑时请删除图片</div>
 <script>

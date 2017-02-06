@@ -1,27 +1,33 @@
 function fabu(){
     var context = $('#customized-buttonpane').html();
     var title = $('#title').text();
+    var tag = $("#article_tag").text();
     if(check(context,title)){
-        $.ajax({
-            url:'/p/insertArticle.json',
-            type:'post',
-            data:{
-                title:title,
-                context:context
-            },
-            success:function(data){
-                if(data == 1){
-                    $.alert('发布成功');
-                    location.href="/p/p.htm";
-                    return false;
-                }else if(data == 2){
-                    $.alert("发布过多，请稍后")
+        if(checkTag(tag)){
+            $.ajax({
+                url:'/p/insertArticle.json',
+                type:'post',
+                data:{
+                    title:title,
+                    context:context,
+                    tag:tag
+                },
+                success:function(data){
+                    if(data == 1){
+                        $.alert('发布成功');
+                        location.href="/p/p.htm";
+                        return false;
+                    }else if(data == 2){
+                        $.alert("发布过多，请稍后")
+                    }
+                    else{
+                        $.alert('发生错误，sorry');
+                    }
                 }
-                else{
-                    $.alert('发生错误，sorry');
-                }
-            }
-        })
+            })
+        }else{
+         $.alert('标签不正确(中文四个字以内，不含符号)');
+        }
     }else{
         $.alert('不能提交哦');
     }
@@ -38,6 +44,17 @@ function checkLogin(){
         }
     })
 
+}
+function checkTag(tag){
+    var reg = /[\u4E00-\u9FA5\uF900-\uFA2D]/;
+    if(tag.length >4 || tag.length == 0){
+        return false;
+    }
+    else if(!reg.test(tag)){
+        return false;
+    }else{
+        return true;
+    }
 }
 function check(c,t){
     if(c.length == 0 || t.length == 0 ){
@@ -78,12 +95,12 @@ function initP(id,num){
                     item += '<a class="title" onclick="detial('+obj.id+')">'+obj.p_title+'</a>';
                     item += '<p class="context">'+context(obj.p_context)+'</p>';
                     item += '<div class="meta">';
-                        item +=         '<a class="context_tag">标签</a>';
+                        item +=         '<a class="context_tag">'+obj.tag+'</a>';
                         item +=     '<a target="_blank">';
-                        item +=       '<i class="iconfont">'+obj.look+'</i>';
+                        item +=       '<i class="iconfont">游览'+obj.look+'</i>';
                         item +=      '</a>';
                         item +=     '<a target="_blank">';
-                        item +=         '<i class="iconfont">'+obj.favour+'</i>';
+                        item +=         '<i class="iconfont">喜欢'+obj.favour+'</i>';
                         item +=         '</a>';
                         item +=     '<a target="_blank">';
 //                        item +=       '<i class="iconfont">10</i>';
@@ -147,4 +164,8 @@ function howwords(user_id){
         }
     })
 
+}
+function remove(){
+    alert();
+    $('#article_tag').text().replace(/[^\u4E00-\u9FA5]/g,'')
 }

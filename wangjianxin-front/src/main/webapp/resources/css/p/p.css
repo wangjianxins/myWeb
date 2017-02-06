@@ -66,7 +66,7 @@
     padding-left: 7px;
     color: #969696;
     vertical-align: middle;
-    font-size: 18px;
+    font-size: 12px;
 
 }
 .name a{
@@ -109,8 +109,8 @@
 }
 .recommend{
     float: right;
-    width:200px;
-    margin-right: 150px;
+    width:250px;
+    margin-right: 90px;
     margin-top: 70px;
     margin-bottom: 20px;
     padding-top: 0;
@@ -227,6 +227,11 @@
     padding: 6px 12px;
     font-size: 20px;
     line-height: 1.42857;
+}
+.context_tag{
+    border: 1px solid #ccc;
+    padding: 1px 8px 2px;
+    -webkit-border-radius: 15px;
 }
 
 

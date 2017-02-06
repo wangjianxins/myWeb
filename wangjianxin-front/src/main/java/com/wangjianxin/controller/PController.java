@@ -84,7 +84,8 @@ public class PController extends MyBaseController {
     @ResponseBody
     public String insertArticle(HttpServletRequest request,
                                 @RequestParam(value = "title") String title,
-                                @RequestParam(value = "context") String context){
+                                @RequestParam(value = "context") String context,
+                                @RequestParam(value = "tag") String tag){
         User user = CookieUtil.getUserFromCookie(request);
         int user_id = user.getId();
         int num = pManager.checkNum(user_id);
@@ -95,6 +96,7 @@ public class PController extends MyBaseController {
             p.setpTitle(title);
             p.setpContext(context);
             p.setUserId(user_id);
+            p.setTag(tag);
             int result = pManager.insertArticle(p);
             return toJson(result);
         }
