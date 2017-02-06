@@ -8,11 +8,12 @@
     <result column="p_context" property="pContext" jdbcType="VARCHAR" />
     <result column="look" property="look" jdbcType="INTEGER" />
     <result column="favour" property="favour" jdbcType="INTEGER" />
+      <result column="tag" property="tag" jdbcType="VARCHAR" />
       <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
 
   </resultMap>
   <sql id="Base_Column_List" >
-    id, user_id, p_title, p_context, look, favour,createtime
+    id, user_id, p_title, p_context, look, favour,tag,createtime
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -23,7 +24,7 @@
     <select id="initp" resultType="java.util.Map" parameterType="map" >
         select
          p.createtime as time,
-        p.id,p.p_title,p.p_context,p.look,p.favour,u.name,u.photo,u.id as user_id
+        p.id,p.p_title,p.p_context,p.look,p.favour,p.tag,u.name,u.photo,u.id as user_id
         from p p,user u
         where p.user_id = u.id
         ORDER BY p.look DESC,p.createtime desc
@@ -84,6 +85,9 @@ limit 0,5
       <if test="favour != null" >
         favour,
       </if>
+        <if test="tag != null" >
+            tag,
+        </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -104,6 +108,9 @@ limit 0,5
       <if test="favour != null" >
         #{favour,jdbcType=INTEGER},
       </if>
+        <if test="tag != null" >
+            #{tag,jdbcType=VARCHAR},
+        </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.wangjianxin.service.model.P" >
@@ -124,6 +131,9 @@ limit 0,5
       <if test="favour != null" >
         favour = #{favour,jdbcType=INTEGER},
       </if>
+        <if test="tag != null" >
+            tag = #{tag,jdbcType=VARCHAR},
+        </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>

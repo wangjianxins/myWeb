@@ -15,7 +15,17 @@ public class P {
 
     private Integer favour;
 
+    private String tag;
+
     private Date createtime;
+
+    public String getTag() {
+        return tag;
+    }
+
+    public void setTag(String tag) {
+        this.tag = tag;
+    }
 
     public Date getCreatetime() {
         return createtime;
