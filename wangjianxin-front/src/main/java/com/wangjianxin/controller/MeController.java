@@ -45,22 +45,22 @@ public class MeController extends MyBaseController {
         return toJson(photo);
     }
     @RequiresAuthentication
-    @ResponseBody
+//    @ResponseBody
     @RequestMapping(value = "/uploadByArticle.json", method = RequestMethod.POST)
     public String  picUploadByArticle(@ModelAttribute("pictemplate") MultipartFile pictemplate,
-                                      @RequestParam(value = "avatar_data")String avatar_data,
+//                                      @RequestParam(value = "avatar_data")String avatar_data,
                                       ModelMap model,HttpServletRequest request,HttpServletResponse response) {
 
-        JSONObject jsStr = JSONObject.fromObject(avatar_data);
-        double x =jsStr.getDouble("x");
-        double y =jsStr.getDouble("y");
-        double height =jsStr.getDouble("height");
-        double width =jsStr.getDouble("width");
-        DecimalFormat df = new DecimalFormat("######0");
-        int x_ = Integer.parseInt(df.format(x));
-        int y_ = Integer.parseInt(df.format(y));
-        int height_ = Integer.parseInt(df.format(height));
-        int width_ = Integer.parseInt(df.format(width));
+//        JSONObject jsStr = JSONObject.fromObject(avatar_data);
+//        double x =jsStr.getDouble("x");
+//        double y =jsStr.getDouble("y");
+//        double height =jsStr.getDouble("height");
+//        double width =jsStr.getDouble("width");
+//        DecimalFormat df = new DecimalFormat("######0");
+//        int x_ = Integer.parseInt(df.format(x));
+//        int y_ = Integer.parseInt(df.format(y));
+//        int height_ = Integer.parseInt(df.format(height));
+//        int width_ = Integer.parseInt(df.format(width));
 
 
         UploadImagesConfImpl conf = new UploadImagesConfImpl();
@@ -89,22 +89,24 @@ public class MeController extends MyBaseController {
                     fileNewName = uploadUtil.generateFileName(file.getOriginalFilename());
                     //上传
                     try {
-                        String path = "/www/img/pic/"+fileNewName;
+                        String path = "C:\\Users\\wangjianxin\\Desktop\\im\\"+fileNewName;
                         newfile.transferTo(new File(path));//存原图
-                        CutImgUtil cutImgUtil = new CutImgUtil();
-                        cutImgUtil.cutImage(path,path,x_,y_,height_,width_);
+//                        CutImgUtil cutImgUtil = new CutImgUtil();
+//                        cutImgUtil.cutImage(path,path,x_,y_,height_,width_);
                         User user = CookieUtil.getUserFromCookie(request);
                             User s = new User();
                                 s.setId(user.getId());
-                                s.setPass(fileNewName);
-                             userManager.updateByPrimaryKey(s);
+                                s.setPhoto(fileNewName);
+                             int updatePhoto = userManager.updateByPrimaryKeySelective(s);
+                        System.out.println(updatePhoto);
+                        logger.info("updatePhoto:" + updatePhoto);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
                 }
             }
         }
-        return fileNewName;
+        return "me/me";
     }
 
 
