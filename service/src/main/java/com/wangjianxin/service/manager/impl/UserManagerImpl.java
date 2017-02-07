@@ -42,7 +42,8 @@ public class UserManagerImpl implements UserManager{
 
     @Override
     public int updateByPrimaryKeySelective(User record) {
-        return 0;
+        int result = userMapper.updateByPrimaryKeySelective(record);
+        return result;
     }
 
     @Override
