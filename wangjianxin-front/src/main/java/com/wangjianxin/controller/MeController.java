@@ -89,7 +89,9 @@ public class MeController extends MyBaseController {
                     fileNewName = uploadUtil.generateFileName(file.getOriginalFilename());
                     //上传
                     try {
-                        String path = "C:\\Users\\wangjianxin\\Desktop\\im\\"+fileNewName;
+//                        String path = "C:\\Users\\wangjianxin\\Desktop\\im\\"+fileNewName;
+                        String path = "/www/img/pic/"+fileNewName;
+
                         newfile.transferTo(new File(path));//存原图
 //                        CutImgUtil cutImgUtil = new CutImgUtil();
 //                        cutImgUtil.cutImage(path,path,x_,y_,height_,width_);
