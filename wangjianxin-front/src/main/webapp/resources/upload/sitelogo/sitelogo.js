@@ -223,30 +223,26 @@
       }
     },
 
-    ajaxUpload: function () {
-      var url = this.$avatarForm.attr('action'),
-          data = new FormData(this.$avatarForm[0]),
+    ajaxUploads: function () {
+      var url = "/me/uploadByArticle.json",
+//          data = new FormData(this.$avatarForm[0]),
           _this = this;
 
       $.ajax(url, {
-        headers: {'X-XSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
         type: 'post',
-        data: data,
+        contentType:"multipart/form-data",
         dataType: 'json',
-        processData: false,
-        contentType: false,
 
         beforeSend: function () {
           _this.submitStart();
         },
 
         success: function (data) {
-          _this.submitDone(data);
+          location.href = "/me.html"
         },
 
         error: function (XMLHttpRequest, textStatus, errorThrown) {
-            alert("错误");
-          _this.submitFail(textStatus || errorThrown);
+            location.href = "/me.html"
         },
 
         complete: function () {

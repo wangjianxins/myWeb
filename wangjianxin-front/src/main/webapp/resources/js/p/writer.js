@@ -86,7 +86,7 @@ function initP(id,num){
                 var obj = data.c[i];
                 var item = '<div class="border" id="item_'+i+'">';
                     item += '<div class="author">';
-                    item +=  '<a class="avatar"><img src="http://101.201.235.59:8087/pic/sss.jpg" class="author_img"/></a>';
+                    item +=  '<a class="avatar"><img src="http://101.201.235.59:8087/pic/'+obj.photo+'" class="author_img"/></a>';
                     item +=  '<div class="name">';
                     item +=  '<a>'+obj.name+'</a>';
                     item +=  '<span>'+formatDate(obj.time)+'</span>';
