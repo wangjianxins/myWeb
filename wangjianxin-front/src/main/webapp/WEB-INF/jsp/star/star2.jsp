@@ -55,14 +55,14 @@
             <%--<div  id="paihang_div">--%>
             <%--</div>--%>
             <script type="text/javascript">
-                var topbar;
-                $(function() {
-                    topbar = $('#sui_nav').SuiNav({});
-                    var navbar = $('#sui_nav2').SuiNav({});
-                    $('.MenuOpen').click(function() {
-                        topbar.show();
-                    });
-                });
+//                var topbar;
+//                $(function() {
+//                    topbar = $('#sui_nav').SuiNav({});
+//                    var navbar = $('#sui_nav2').SuiNav({});
+//                    $('.MenuOpen').click(function() {
+//                        topbar.show();
+//                    });
+//                });
                 function test(user_id){
                     if(user_id == ""){
                         $.confirm({

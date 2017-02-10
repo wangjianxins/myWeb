@@ -17,7 +17,10 @@
     <script src="/resources/js/index/suimin.js" type="text/javascript" charset="utf-8"></script>
     <script src="/resources/js/myemojiPl.js"></script>
     <script src="/resources/js/index/index.js"></script>
-    <%--<script src="/resources/js/login/index.js"></script>--%>
+
+    <jsp:include  page="/WEB-INF/jsp/header.jsp"/>
+
+<%--<script src="/resources/js/login/index.js"></script>--%>
     <style>
 
         .avator{
@@ -33,80 +36,80 @@
 
 </head>
 <body>
-            <div id="sui_nav" class="sui-nav horizontal">
-            <div class="sui-nav-wrapper nav-border nav-line">
-                <ul>
-                    <li><a class="text-primary" onclick="a()"><span class="glyphicon glyphicon-home"></span> 主页</a></li>
-                    <li><a class="text-primary" onclick="p()"><span></span> article</a></li>
-                    <li><a href="#" class="text-primary" onclick="c()">about</a>
-                        <ul>
-                            <li><a href="#"><span class="glyphicon glyphicon-edit"></span> editor</a></li>
-                            <li><a href="#"><span class="glyphicon glyphicon-pencil"></span> pencil</a></li>
-                            <li><a href="#"><span class="glyphicon glyphicon-saved"></span> Level23</a>
-                                <span class="indicator">&gt;</span>
-                                <ul>
-                                    <li><a href="#">Level31</a></li>
-                                    <li><a href="#">Level32</a></li>
-                                    <li class="hide-in-horizontal"><a href="#">Level33</a>
-                                        <ul>
-                                            <li><a href="#">Level331</a></li>
-                                            <li><a href="#">Level332</a></li>
-                                            <li><a href="#">Level333</a></li>
-                                            <li><a href="#">Level334</a></li>
-                                        </ul>
-                                        <span class="indicator">&gt;</span>
-                                    </li>
-                                    <li><a href="#">Level34</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#"><span class="glyphicon glyphicon-save"></span> Level24</a></li>
-                        </ul>
-                    </li>
-                    <li><a class="text-danger" onclick="c()">star</a></li>
-                    <li><a class="text-danger" onclick="l()">link</a></li>
-                    <li><a class="text-danger" onclick="m()">music</a></li>
+            <%--<div id="sui_nav" class="sui-nav horizontal">--%>
+            <%--<div class="sui-nav-wrapper nav-border nav-line">--%>
+                <%--<ul>--%>
+                    <%--<li><a class="text-primary" onclick="a()"><span class="glyphicon glyphicon-home"></span> 主页</a></li>--%>
+                    <%--<li><a class="text-primary" onclick="p()"><span></span> article</a></li>--%>
+                    <%--<li><a href="#" class="text-primary" onclick="c()">about</a>--%>
+                        <%--<ul>--%>
+                            <%--<li><a href="#"><span class="glyphicon glyphicon-edit"></span> editor</a></li>--%>
+                            <%--<li><a href="#"><span class="glyphicon glyphicon-pencil"></span> pencil</a></li>--%>
+                            <%--<li><a href="#"><span class="glyphicon glyphicon-saved"></span> Level23</a>--%>
+                                <%--<span class="indicator">&gt;</span>--%>
+                                <%--<ul>--%>
+                                    <%--<li><a href="#">Level31</a></li>--%>
+                                    <%--<li><a href="#">Level32</a></li>--%>
+                                    <%--<li class="hide-in-horizontal"><a href="#">Level33</a>--%>
+                                        <%--<ul>--%>
+                                            <%--<li><a href="#">Level331</a></li>--%>
+                                            <%--<li><a href="#">Level332</a></li>--%>
+                                            <%--<li><a href="#">Level333</a></li>--%>
+                                            <%--<li><a href="#">Level334</a></li>--%>
+                                        <%--</ul>--%>
+                                        <%--<span class="indicator">&gt;</span>--%>
+                                    <%--</li>--%>
+                                    <%--<li><a href="#">Level34</a></li>--%>
+                                <%--</ul>--%>
+                            <%--</li>--%>
+                            <%--<li><a href="#"><span class="glyphicon glyphicon-save"></span> Level24</a></li>--%>
+                        <%--</ul>--%>
+                    <%--</li>--%>
+                    <%--<li><a class="text-danger" onclick="c()">star</a></li>--%>
+                    <%--<li><a class="text-danger" onclick="l()">link</a></li>--%>
+                    <%--<li><a class="text-danger" onclick="m()">music</a></li>--%>
 
-                </ul>
+                <%--</ul>--%>
 
-                <ul class="pull-right" id="login_names">
-                    <li><a class="text-primary" onclick="d()">登录</a>
-                    </li>
-                </ul>
-                <input type="text" id="user_id" style="display: none"/>
-                <ul class="pull-right" id="login_name">
-                    <li><a id="username" class="text-primary"></a>
-                        <img  class="avator" src="" id="photo"/>
+                <%--<ul class="pull-right" id="login_names">--%>
+                    <%--<li><a class="text-primary" onclick="d()">登录</a>--%>
+                    <%--</li>--%>
+                <%--</ul>--%>
+                <%--<input type="text" id="user_id" style="display: none"/>--%>
+                <%--<ul class="pull-right" id="login_name">--%>
+                    <%--<li><a id="username" class="text-primary"></a>--%>
+                        <%--<img  class="avator" src="" id="photo"/>--%>
 
-                        <ul>
-                            <li><a onclick="quit()">注销登录</a></li>
-                            <li><a>修改密码</a></li>
-                            <li><a>我的消息</a></li>
-                            <li><a>其他</a>
-                                <ul>
-                                    <li><a>这都能找到</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
-            <div class="container ">
-                <div class="nav-second">
-                    <div id="sui_nav2" class="sui-nav">
-                        <script type="text/javascript">
-                            var topbar;
-                            $(function() {
-                                topbar = $('#sui_nav').SuiNav({});
-                                var navbar = $('#sui_nav2').SuiNav({});
-                                $('.MenuOpen').click(function() {
-                                    topbar.show();
-                                });
-                            });
-                        </script>
-                    </div>
-                </div>
-            </div>
+                        <%--<ul>--%>
+                            <%--<li><a onclick="quit()">注销登录</a></li>--%>
+                            <%--<li><a>修改密码</a></li>--%>
+                            <%--<li><a>我的消息</a></li>--%>
+                            <%--<li><a>其他</a>--%>
+                                <%--<ul>--%>
+                                    <%--<li><a>这都能找到</a></li>--%>
+                                <%--</ul>--%>
+                            <%--</li>--%>
+                        <%--</ul>--%>
+                    <%--</li>--%>
+                <%--</ul>--%>
+            <%--</div>--%>
+        <%--</div>--%>
+            <%--<div class="container ">--%>
+                <%--<div class="nav-second">--%>
+                    <%--<div id="sui_nav2" class="sui-nav">--%>
+                        <%--<script type="text/javascript">--%>
+                            <%--var topbar;--%>
+                            <%--$(function() {--%>
+                                <%--topbar = $('#sui_nav').SuiNav({});--%>
+                                <%--var navbar = $('#sui_nav2').SuiNav({});--%>
+                                <%--$('.MenuOpen').click(function() {--%>
+                                    <%--topbar.show();--%>
+                                <%--});--%>
+                            <%--});--%>
+                        <%--</script>--%>
+                    <%--</div>--%>
+                <%--</div>--%>
+            <%--</div>--%>
             <%--<div class="container">--%>
                 <%--<div class="row">--%>
                     <%--<div class="col-md-offset-3 col-md-6">--%>

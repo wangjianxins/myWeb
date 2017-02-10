@@ -11,45 +11,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml"  class="demo-2 no-js">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>link</title>
+    <title>链接</title>
     <jsp:include  page="/WEB-INF/jsp/header.jsp"/>
-
-    <link rel="stylesheet" type="text/css" href="/resources/css/start_/normalize.css" />
-    <link rel="stylesheet" type="text/css" href="/resources/css/start_/demo.css" />
-    <link rel="stylesheet" type="text/css" href="/resources/css/start_/component.css" />
     <link rel="stylesheet" type="text/css" href="/resources/css/link/link.css" />
-    <script src="/resources/js/star/snap.svg-min.js"></script>
-    <!--[if IE]>
-    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
     <script src="/resources/js/alert/jquery-confirm.js"></script>
     <script src="/resources/js/alert/jquery.sticky.min.js"></script>
     <script src="/resources/js/alert/pretty.js"></script>
-    <script src="/resources/js/star/star.js"></script>
-
     <link rel="stylesheet" href="/resources/css/alert/jquery-confirm.css">
-
-    <link rel="stylesheet" href="/resources/css/start_/start_.css">
 </head>
 <body>
-<div class="container ">
-    <div class="nav-second">
-        <div id="sui_nav2" class="sui-nav">
-            <script type="text/javascript">
-                var topbar;
-                $(function() {
-                    topbar = $('#sui_nav').SuiNav({});
-                    var navbar = $('#sui_nav2').SuiNav({});
-                    $('.MenuOpen').click(function() {
-                        topbar.show();
-                    });
-                });
-            </script>
-        </div>
-    </div>
-</div>
-
 <div class="link_center">
     <a class="link" href="javascript:void(0)" onclick="bolg('http://lfei.org/')" data-letters="fly">fly</a><br>
     <a class="link" href="javascript:void(0)" onclick="bolg('http://www.keen8.com/')" data-letters="keen8">keen8</a><br>
