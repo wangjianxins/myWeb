@@ -185,13 +185,13 @@ public class IndexController extends MyBaseController{
     public String star (Model model) {
        List starlist =  starManager.selectAll();
         model.addAttribute("starlist",starlist);
-        return "/star/star2";
+        return "/star/star";
     }
     @RequestMapping(value = "/stars.html")
     public String stars (Model model) {
         List starlist =  starManager.selectAll();
         model.addAttribute("starlist",starlist);
-        return "/star/star2";
+        return "/star/star3";
     }
     @RequestMapping(value = "/me.html")
     public String me() {
