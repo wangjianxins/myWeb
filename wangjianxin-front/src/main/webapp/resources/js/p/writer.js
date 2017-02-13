@@ -169,3 +169,48 @@ function remove(){
     alert();
     $('#article_tag').text().replace(/[^\u4E00-\u9FA5]/g,'')
 }
+
+function follow(taguser_id){
+    var stas = $('#span_follow_'+taguser_id).text();
+    var type;
+    if(stas == "+关注"){
+        type = 1;
+    }else{
+        type =2;
+    }
+    $.ajax({
+        url:"/p/follow.json",
+        data:{
+            taguser_id:taguser_id,
+            type:type
+        },
+        success: function (data) {
+            if(data== 1 && stas == "+关注"){
+                $('#span_follow_'+taguser_id).text("已关注");
+            }else if(data ==1 && stas == "已关注") {
+                $('#span_follow_'+taguser_id).text("+关注");
+            }else if(data == 2){
+                $.alert("未登录")
+            }
+        }
+    })
+
+}
+function checkFollow(taguser_id){
+    $.ajax({
+        url:"/p/checkFollow.json",
+        data:{
+            taguser_id:taguser_id
+        },
+        success: function (data) {
+            if(data == 99){
+                $('#span_follow_'+taguser_id).text("已关注");
+            }else if(data == 98){
+                //未关注
+            }else if(data == 97){
+                console.log("游客未登录")
+            }
+        }
+    })
+
+}

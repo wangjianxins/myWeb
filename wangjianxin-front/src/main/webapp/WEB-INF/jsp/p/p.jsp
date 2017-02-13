@@ -16,6 +16,12 @@
     <title>文章</title>
     <jsp:include  page="/WEB-INF/jsp/header.jsp"/>
 
+    <!---->
+    <script src="/resources/js/alert/jquery-confirm.js"></script>
+    <script src="/resources/js/alert/jquery.sticky.min.js"></script>
+    <script src="/resources/js/alert/pretty.js"></script>
+    <link rel="stylesheet" href="/resources/css/alert/jquery-confirm.css">
+
 </head>
 <body>
 <a class="write_a" target="_blank" href="/p/writer.htm/"><i class="ic">写文章</i></a>
@@ -75,9 +81,10 @@
     <div class="rec_list">
         <div class="rec_li">
             <a class="avatar"><img src="http://101.201.235.59:8087/pic/${recommendlist.photo}" alt="" class="author_img"/></a>
-            <a class="follow">
+            <a class="follow" onclick="follow(${recommendlist.user_id})">
                 <i class="ic-follow"></i>
-               +关注
+               <span id="span_follow_${recommendlist.user_id}">+关注</span>
+                <script >checkFollow(${recommendlist.user_id})</script>
             </a>
             <a class="rec_name">${recommendlist.name}</a>
             <p>写了${recommendlist.pcount}篇文章</p>

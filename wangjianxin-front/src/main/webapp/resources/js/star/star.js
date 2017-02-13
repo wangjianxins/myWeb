@@ -21,7 +21,7 @@ function test(user_id){
             '<label>输入星座时间段例如：4.21～5.20</label>'+
             '<input type="text" id="star_time" name="star_time" placeholder="星座时间段" class="form-control">'+
             '<label>上传星座图片:</label>'+
-            '<input  type="file" name="photo" id="photo">' +
+            '<input  type="file" name="photo" id="uploadfile">' +
             '</form>',
         title: '创建星座',
         theme: 'white',
@@ -31,9 +31,8 @@ function test(user_id){
             }, 1500);
         },
         confirm: function (){
-            alert($('#photo').files[0]);
             if($('#star_name').val() ==0 || $('#star_des').val() ==0 ||
-                $('#star_time').val() ==0 ||  $('#photo').val() == ''){
+                $('#star_time').val() ==0 ||  $('#uploadfile').val() == ''){
                 $.alert('请填写完整');
                 return false;
             }else{

@@ -154,6 +154,10 @@
     font-size: 12px;
     color: #42c02e;
 }
+.rec_li .follow span{
+    font-size: 12px;
+    color: #42c02e;
+}
 .rec_li .rec_name{
     cursor: pointer;
     padding-top: 5px;
