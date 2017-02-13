@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wangjianxin.service.dao.UserFollowMapper" >
+  <resultMap id="BaseResultMap" type="com.wangjianxin.service.model.UserFollow" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="taguser_id" property="taguserId" jdbcType="INTEGER" />
+    <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="flag" property="flag" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, user_id, taguser_id, createtime, flag
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from user_follow
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+    <select id="checkFollow" resultMap="BaseResultMap" parameterType="map">
+      select id,flag
+      from user_follow
+      where user_id= #{user_id}
+      and taguser_id=#{taguser_id}
+    </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from user_follow
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.wangjianxin.service.model.UserFollow" >
+    insert into user_follow (id, user_id, taguser_id, 
+      createtime, flag)
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{taguserId,jdbcType=INTEGER}, 
+      #{createtime,jdbcType=TIMESTAMP}, #{flag,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wangjianxin.service.model.UserFollow" >
+    insert into user_follow
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="taguserId != null" >
+        taguser_id,
+      </if>
+      <if test="createtime != null" >
+        createtime,
+      </if>
+      <if test="flag != null" >
+        flag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="taguserId != null" >
+        #{taguserId,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="flag != null" >
+        #{flag,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wangjianxin.service.model.UserFollow" >
+    update user_follow
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="taguserId != null" >
+        taguser_id = #{taguserId,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="flag != null" >
+        flag = #{flag,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wangjianxin.service.model.UserFollow" >
+    update user_follow
+    set user_id = #{userId,jdbcType=INTEGER},
+      taguser_id = #{taguserId,jdbcType=INTEGER},
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      flag = #{flag,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+    <update id="Follow" parameterType="map">
+        update user_follow
+        set
+        <if test="type ==1">
+            flag = 0
+        </if>
+        <if test="type == 2">
+            flag = 1
+        </if>
+        where user_id=#{user_id}
+        and taguser_id=#{taguser_id}
+    </update>
+
+</mapper>
