@@ -3,10 +3,12 @@ package com.wangjianxin.controller;
 import com.wangjianxin.service.dao.PfavourMapper;
 import com.wangjianxin.service.manager.PManager;
 import com.wangjianxin.service.manager.PfavourManager;
+import com.wangjianxin.service.manager.UserFollowManager;
 import com.wangjianxin.service.manager.UserManager;
 import com.wangjianxin.service.model.P;
 import com.wangjianxin.service.model.Pfavour;
 import com.wangjianxin.service.model.User;
+import com.wangjianxin.service.model.UserFollow;
 import com.wangjianxin.util.CookieUtil;
 import net.sf.json.JSON;
 import net.sf.json.JSONArray;
@@ -35,7 +37,8 @@ public class PController extends MyBaseController {
     private UserManager userManager;
     @Autowired
     private PfavourManager pfavourManager;
-
+    @Autowired
+    private UserFollowManager userFollowManager;
     @RequestMapping("/initp.json")
     @ResponseBody
     public String initP(@RequestParam(value = "pagenum") int pagenum,
@@ -174,6 +177,53 @@ public class PController extends MyBaseController {
             }
         }else{
             return toJson(97);//未登录
+        }
+    }
+
+    @ResponseBody
+    @RequestMapping("/checkFollow.json")
+    public String checkFollow(HttpServletRequest request,
+                              @RequestParam(value = "taguser_id") int taguser_id){
+        User user = CookieUtil.getUserFromCookie(request);
+        if(user != null){
+            UserFollow userFollow = userFollowManager.checkFollow(user.getId(),taguser_id);
+            if(userFollow != null && userFollow.getFlag() == 0 ){
+                return toJson(99);
+            }else{
+                return toJson(98);
+            }
+        }else{
+            return toJson(97);//未登录
+        }
+    }
+
+    @RequestMapping("/follow.json")
+    @ResponseBody
+    public String follow(HttpServletRequest request,
+                         @RequestParam(value = "taguser_id") int taguser_id,
+                         @RequestParam(value = "type") int type){
+        User user = CookieUtil.getUserFromCookie(request);
+        if(user != null){
+            int user_id = user.getId();
+            UserFollow result = userFollowManager.checkFollow(user_id,taguser_id);
+            int updateFlagresult = 0;
+            if(type == 1){
+                if(result == null){
+                    //直接插入
+                    UserFollow userFollow = new UserFollow();
+                    userFollow.setUserId(user_id);
+                    userFollow.setTaguserId(taguser_id);
+                     updateFlagresult = userFollowManager.insertSelective(userFollow);
+                }else{
+                    updateFlagresult =  userFollowManager.Follow(user_id,taguser_id,1);
+                }
+            }else{
+                updateFlagresult = userFollowManager.Follow(user_id,taguser_id,2);
+            }
+
+            return toJson(updateFlagresult);
+        }else{
+            return toJson(2);
         }
     }
 
