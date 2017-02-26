@@ -4,13 +4,17 @@ import com.wangjianxin.service.manager.ArticleManager;
 import com.wangjianxin.service.manager.IndexWordManager;
 import com.wangjianxin.service.manager.ZanManager;
 import com.wangjianxin.service.model.Article;
+import com.wangjianxin.service.model.User;
 import com.wangjianxin.service.model.Zan;
+import com.wangjianxin.util.CookieUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 /**
  * Created by wangjianxin on 2016/11/1.
@@ -50,19 +54,27 @@ public class ArticleController extends MyBaseController{
     /**
      * 发表
      * @param content
-     * @param user_id
      * @return
      */
     @ResponseBody
     @RequestMapping(value = "/send.json",method = RequestMethod.GET)
     public String send(@RequestParam(value = "content") String content,
-                       @RequestParam(value = "user_id") int user_id){
-        Article article = new Article();
-        article.setContent(content);
-        article.setUserId(user_id);
-        int result = articleManager.insertSelective(article);
-        System.out.println(result);
-        return toJson(result);
+                       HttpServletRequest request){
+        User user = CookieUtil.getUserFromCookie(request);
+        if(user != null){
+            Article article = new Article();
+            String newcontent = stripHtml(content).trim();
+            if(newcontent.equals("") || newcontent == null){
+                return toJson(0);
+            }else{
+                article.setContent(newcontent);
+                article.setUserId(user.getId());
+                int result = articleManager.insertSelective(article);
+                return toJson(result);
+            }
+        }else{
+            return toJson(0);
+        }
     }
 
     /**

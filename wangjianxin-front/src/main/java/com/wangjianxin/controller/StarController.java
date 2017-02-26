@@ -43,7 +43,7 @@ public class StarController extends MyBaseController {
                          @RequestParam(value = "star_userid") int user_id,
                          @ModelAttribute("photo") MultipartFile photo,
                          HttpServletRequest request){
-
+        System.out.print("666666666666666666666");
        List check =  starManager.check(user_id);
         if(check.size()>0){
             return toJson(0,"","");

@@ -10,6 +10,7 @@ import net.sf.json.JSONObject;
 import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -111,11 +112,38 @@ public class MeController extends MyBaseController {
         return "me/me";
     }
 
+    @RequestMapping("/updateinfo.json")
+    @ResponseBody
+    public String  updateinfo(HttpServletRequest request,
+                             @RequestParam(value = "name") String name,
+                             @RequestParam(value = "summary") String summary,
+                             @RequestParam(value = "weixin") String weixin){
+        User cookieuser = CookieUtil.getUserFromCookie(request);
+       int user_id =cookieuser.getId();
+        User user = new User();
+        user.setId(user_id);
+        user.setName(name);
+        if(summary.length() > 30){
+            summary = "兄弟简述不能大于30字符";
+        }
+        user.setSummary(summary);
+        user.setWeixin(weixin);
+        int list =  userManager.updateByPrimaryKeySelective(user);
+        return toJson("请返回页面刷新" +list);
+    }
+
 
     @RequestMapping("/getInfo.json")
     @ResponseBody
     public String getInfo(@RequestParam(value = "user_id") int user_id){
       User list =   userManager.selectByPrimaryKey(user_id);
         return toJson(list);
+    }
+    @RequestMapping("/detial.html")
+    public String detial(HttpServletRequest request,Model model){
+        User user = CookieUtil.getUserFromCookie(request);
+        User result = userManager.selectByPrimaryKey(user.getId());
+        model.addAttribute("user",result);
+        return "me/detail";
     }
 }
