@@ -52,9 +52,9 @@ public class UserManagerImpl implements UserManager{
     }
 
     @Override
-    public User login(String email, String pass) {
+    public User login(String mob, String pass) {
         Map<String ,Object> map = new HashMap<String ,Object>();
-        map.put("email",email);
+        map.put("mob",mob);
         map.put("pass",pass);
         User list = userMapper.login(map);
         return list;

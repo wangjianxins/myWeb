@@ -8,7 +8,7 @@ import java.util.List;
  */
 public interface UserManager extends BaseObjectManager<User,Integer>{
 
-    User login(String email,String pass);
+    User login(String mob,String pass);
 
     List check(String email);
 

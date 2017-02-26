@@ -1,9 +1,13 @@
 package com.wangjianxin.service.model;
 
+import java.util.Date;
+
 public class User extends BaseObject {
     private Integer id;
 
     private String email;
+
+    private String mob;
 
     private String name;
 
@@ -12,6 +16,44 @@ public class User extends BaseObject {
     private Integer money;
 
     private String photo;
+
+    private String weixin;
+
+    private String summary;
+
+    private Date createtime;
+
+    public String getMob() {
+        return mob;
+    }
+
+    public void setMob(String mob) {
+        this.mob = mob;
+    }
+
+    public String getWeixin() {
+        return weixin;
+    }
+
+    public void setWeixin(String weixin) {
+        this.weixin = weixin;
+    }
+
+    public Date getCreatetime() {
+        return createtime;
+    }
+
+    public void setCreatetime(Date createtime) {
+        this.createtime = createtime;
+    }
+
+    public String getSummary() {
+        return summary;
+    }
+
+    public void setSummary(String summary) {
+        this.summary = summary;
+    }
 
     public String getPhoto() {
         return photo;

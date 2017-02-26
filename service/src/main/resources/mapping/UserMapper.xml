@@ -4,14 +4,18 @@
   <resultMap id="BaseResultMap" type="com.wangjianxin.service.model.User" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="mob" property="mob" jdbcType="VARCHAR" />
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="pass" property="pass" jdbcType="VARCHAR" />
     <result column="money" property="money" jdbcType="INTEGER" />
       <result column="photo" property="photo" jdbcType="VARCHAR" />
+      <result column="weixin" property="weixin" jdbcType="VARCHAR" />
+      <result column="summary" property="summary" jdbcType="VARCHAR" />
+      <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
 
   </resultMap>
   <sql id="Base_Column_List" >
-    id, email, name, pass, money,photo
+    id, email, name, pass, money,photo,weixin,summary,createtime,mob
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -27,7 +31,7 @@
     </select>
     <select id="getName" resultType="java.util.Map" parameterType="java.lang.Integer" >
         select
-        id,name,money,email
+        id,name,money,email,mob
         from user
         where id = #{user_id,jdbcType=INTEGER}
     </select>
@@ -35,14 +39,14 @@
         select
         <include refid="Base_Column_List" />
         from user
-        where email = #{email,jdbcType=VARCHAR}
+        where mob = #{mob,jdbcType=VARCHAR}
         and pass = #{pass,jdbcType=VARCHAR}
     </select>
     <select id="check" resultMap="BaseResultMap" parameterType="java.lang.String" >
         select
         <include refid="Base_Column_List" />
         from user
-        where email = #{email,jdbcType=VARCHAR}
+        where mob = #{mob,jdbcType=VARCHAR}
     </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from user
@@ -63,6 +67,9 @@
       <if test="email != null" >
        email,
       </if>
+        <if test="mob != null" >
+            mob,
+        </if>
       <if test="name != null" >
         name,
       </if>
@@ -83,6 +90,9 @@
       <if test="email != null" >
         #{email,jdbcType=VARCHAR},
       </if>
+        <if test="mob != null" >
+            #{mob,jdbcType=VARCHAR},
+        </if>
       <if test="name != null" >
         #{name,jdbcType=VARCHAR},
       </if>
@@ -103,6 +113,9 @@
       <if test="email != null" >
         email = #{email,jdbcType=VARCHAR},
       </if>
+        <if test="mob != null" >
+            mob = #{mob,jdbcType=VARCHAR},
+        </if>
       <if test="name != null" >
         name = #{name,jdbcType=VARCHAR},
       </if>
@@ -114,6 +127,12 @@
       </if>
         <if test="photo != null" >
             photo = #{photo,jdbcType=VARCHAR},
+        </if>
+        <if test="weixin != null" >
+            weixin = #{weixin,jdbcType=VARCHAR},
+        </if>
+        <if test="summary != null" >
+            summary = #{summary,jdbcType=VARCHAR},
         </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
