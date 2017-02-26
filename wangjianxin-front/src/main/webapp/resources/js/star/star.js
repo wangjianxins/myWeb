@@ -31,6 +31,7 @@ function test(user_id){
             }, 1500);
         },
         confirm: function (){
+            alert($('#uploadfile').v())
             if($('#star_name').val() ==0 || $('#star_des').val() ==0 ||
                 $('#star_time').val() ==0 ||  $('#uploadfile').val() == ''){
                 $.alert('请填写完整');

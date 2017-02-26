@@ -3,7 +3,7 @@
 }
 .left{
     float: left;
-    padding-top: 40px;
+    padding-top: 50px;
     padding-left: 100px;
     width: 300px;
     height: 250px;
@@ -14,6 +14,7 @@
     border-radius:50%;
     width: 170px ;
     height:170px;
+    cursor: pointer;
 }
 .left_div{
     padding-top: 10px;
@@ -21,11 +22,13 @@
     height:150px;
 }
 .right{
-
-    padding-top: 40px;
+    padding-top: 30px;
     padding-left: 300px;
     height:350px
-
+}
+.rightdiv_item{
+    width:600px;
+    margin-left: 50px;
 }
 .right_div{
     padding-top: 30px;
@@ -37,6 +40,8 @@
     /*height: 100%;*/
 /*}*/
 .mokuai{
+    margin-top: 80px;
+    margin-left: 400px;
     padding: 5px;
     text-align:center;
     background-color: #3498db;
@@ -50,10 +55,13 @@
     overflow: hidden;
     padding-left: 10px;
 }
+.mokuai_a{
+    margin-left: 400px;
+}
 .a{
     float: left;
     display: inline-block;
-    margin: 10px 10px 2px 2px;
+    margin: 10px 30px 2px 2px;
     vertical-align: middle;
     white-space: nowrap;
     height: 26px;

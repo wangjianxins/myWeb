@@ -17,7 +17,7 @@
     <form id="login" class="current1" method="post">
         <h2>用户登录</h2>
         <img class="avator" src="/resources/images/avatar.png" width="96" height="96"/>
-        <label>邮箱<input type="text" name="userName" id="email" /><span>邮箱为空</span></label>
+        <label>手机<input type="text" name="userName" id="email" /><span>手机号为空</span></label>
         <label>密码<input type="password" name="pass" id="pass" /><span>密码为空</span></label>
         <button type="button" onclick="login()">登录</button>
         <button type="button" onclick="goReg()">注册</button>

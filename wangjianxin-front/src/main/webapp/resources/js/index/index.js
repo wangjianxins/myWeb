@@ -9,6 +9,7 @@ function m(){location.href='/music.html'}
 function l(){location.href='/link.html'}
 function p(){location.href='/p/p.htm'}
 function updatePhtot(){location.href='/me.html'}
+function me(){location.href='/me/detial.html'}
 
 
 

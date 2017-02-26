@@ -26,6 +26,7 @@
     height: 100%;
     border: 1px solid #ddd;
     border-radius: 50%;
+    cursor: pointer;
 }
 .article .author .info{
     vertical-align: middle;
@@ -109,8 +110,109 @@
     color: #ea6f5a;
 }
 .di{
-    margin: 150px auto;
+    margin: 60px auto;
     width: 620px;
     height: 100%;
     vertical-align:middle;
 }
+.comment_list{
+    padding-top: 20px;
+    margin: 0 auto;
+    padding-bottom: 60px;
+    width: 620px;
+}
+.comment{
+    position: relative;
+}
+.comment textarea{
+    padding: 10px 15px;
+    width: 100%;
+    height: 80px;
+    font-size: 13px;
+    border: 1px solid #dcdcdc;
+    border-radius: 4px;
+    background-color: hsla(0,0%,71%,.1);
+    resize: none;
+    display: inline-block;
+    vertical-align: top;
+    outline-style: none;
+}
+.comment_send{
+    height: 50px;
+}
+.comment_btnsend{
+    float: right;
+    width: 78px;
+    margin: 10px 0;
+    padding: 8px 18px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    color: #fff!important;
+    background-color: #42c02e;
+    cursor: pointer;
+    outline: none;
+    display: block;
+}
+.comment_cancel{
+    float: right;
+    margin: 18px 30px 0 0;
+    font-size: 16px;
+    color: #969696;
+    cursor: pointer;
+}
+.comment_detial{
+    padding: 20px 0 30px;
+    border-bottom: 1px solid #f0f0f0;
+}
+.comment_detauthor{
+    margin-bottom: 15px;
+}
+.comment_detauthor .avatar{
+    margin-right: 5px;
+    width: 38px;
+    height: 38px;
+    vertical-align: middle;
+    display: inline-block;
+}
+.comment_detauthor .avatar img{
+    width: 100%;
+    height: 100%;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.comment_detauthor .comment_detinfo{
+    display: inline-block;
+    vertical-align: middle;
+}
+.comment_detauthor .comment_detinfo a{
+    font-size: 15px;
+    color: #333;
+    cursor: pointer;
+}
+.comment_detauthor .comment_detinfo .meta{
+    font-size: 12px;
+    color: #969696;
+}
+.comment_detauthor .comment_detinfo .meta span{
+    margin-right: 6px;
+}
+
+.comment_wrap p{
+    font-size: 16px;
+    line-height: 1.5;
+}
+.comment_wrap .tool-group a{
+    margin-right: 10px;
+    color: #969696;
+    display: inline-block;
+}
+ .tool_group span {
+    margin-right: 5px;
+    vertical-align: middle;
+    font-size: 14px;
+    color: #969696;
+ cursor: pointer;
+
+ }

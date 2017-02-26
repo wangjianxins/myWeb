@@ -69,7 +69,7 @@
 				<ul>
 					<li><a class="text-primary" onclick="a()"><span class="glyphicon glyphicon-home"></span> 主页</a></li>
                     <li><a class="text-primary" onclick="p()"><span></span>文章</a></li>
-
+                    <li><a class="text-primary" onclick="l()">链接</a></li>
                     <li><a href="#" class="text-primary" onclick="b()">关于</a>
 						<ul>
 							<li><a href="#"><span class="glyphicon glyphicon-edit"></span> editor</a></li>
@@ -94,8 +94,7 @@
 							<li><a href="#"><span class="glyphicon glyphicon-save"></span> Level24</a></li>
 						</ul>
 					</li>
-					<li><a class="text-primary" onclick="c()">星座</a></li>
-                    <li><a class="text-primary" onclick="l()">链接</a></li>
+					<%--<li><a class="text-primary" onclick="c()">星座</a></li>--%>
                     <%--<li><a class="text-danger" onclick="m()">music</a></li>--%>
                 </ul>
 
@@ -108,7 +107,7 @@
                 <input type="text" id="user_id" style="display: none"/>
 				<ul class="pull-right" id="login_name">
 					<li><a id="username" class="text-primary"></a>
-                        <img  class="avator" src="" id="photo" onclick="updatePhtot()"/>
+                        <img  class="avator" src="" id="photo" onclick="me()"/>
                         <ul>
                                 <li><a onclick="quit()">注销登录</a></li>
                                 <li><a>修改密码</a></li>

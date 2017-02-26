@@ -77,3 +77,71 @@ function checkFavour(p_id){
         }
     })
 }
+
+function commentsend(p_id){
+    var comment = $('#comment').val();
+    $.ajax({
+        url:'/comment/pc.json',
+        type:'post',
+        data:{
+            p_id:p_id,
+            comment:comment
+        },
+        success:function (data){
+            if(data == 1){
+                initcomment(p_id);
+                $('#comment').val("");
+            }else if(data == 97){
+                $.alert("未登录")
+                return false;
+            }else if(data == 98){
+                $.alert("请输入内容");
+            }
+        }
+    })
+}
+
+function initcomment(p_id){
+    $.ajax({
+        url:'/comment/init.json',
+        data:{
+            p_id:p_id
+        },
+        success:function(data) {
+            var innerHtml = $('#comment_detial');
+            innerHtml.empty();
+            for (var i = 0; i < data.length; i++) {
+                var
+               item =' <div class="comment_detial">';
+                item +='     <div>';
+                item +='<div class="comment_detauthor">';
+                item +='    <a class="avatar" target="_blank">';
+                item +='        <img src="http://101.201.235.59:8087/pic/'+data[i].photo+'" onclick="go('+data[i].userid+')">';
+                item +='        </a>';
+                item +='        <div class="comment_detinfo">';
+                item +='            <a class="name" target="_blank">'+data[i].name+'</a>';
+                item +='            <div class="meta">';
+                item +='                <span>'+(i+1)+'楼 · '+data[i].createtime+'</span>';
+                item +='            </div>';
+                item +='        </div>';
+                item +='    </div>';
+                item +='    <div class="comment_wrap">';
+                item +='        <p>'+data[i].comment+'</p>';
+                item +='        <div class="tool_group">';
+//                item +='            <%--<a><span>回复</span></a>--%>
+                item +='            </div>';
+                item +='        </div>';
+                item +='    </div>';
+                item +='</div>';
+                innerHtml.append(item);
+            }
+        }
+    })
+}
+
+function commentcancel(){
+    $('#comment').val("");
+}
+function go(user_id){
+    alert(user_id)
+}

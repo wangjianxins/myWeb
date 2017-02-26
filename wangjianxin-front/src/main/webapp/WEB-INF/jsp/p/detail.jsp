@@ -57,6 +57,36 @@
         </div>
     </div>
 </div>
+<div class="comment_list">
+    <div class="comment" id="comment_div">
+        <textarea placeholder="写下你的评论" id="comment"></textarea>
+        <div class="comment_send">
+            <a class="comment_btnsend" id="comment_send" onclick="commentsend(${p.id})">发送</a>
+            <a class="comment_cancel" id="comment_cancel" onclick="commentcancel()">取消</a>
+        </div>
+    </div>
+    <div class="comment_detial" id="comment_detial">
+        <%--<div>--%>
+            <%--<div class="comment_detauthor">--%>
+                <%--<a class="avatar" target="_blank">--%>
+                    <%--<img src="http://101.201.235.59:8087/pic/sss.jpg">--%>
+                <%--</a>--%>
+                <%--<div class="comment_detinfo">--%>
+                    <%--<a class="name" target="_blank">小楼登封</a>--%>
+                    <%--<div class="meta">--%>
+                        <%--<span>10楼 · 2017.02.25 14:44</span>--%>
+                    <%--</div>--%>
+                <%--</div>--%>
+            <%--</div>--%>
+            <%--<div class="comment_wrap">--%>
+                <%--<p>读写结合嘛，读在简书外，写在简书中。</p>--%>
+                <%--<div class="tool_group">--%>
+                    <%--&lt;%&ndash;<a><span>回复</span></a>&ndash;%&gt;--%>
+                <%--</div>--%>
+            <%--</div>--%>
+        <%--</div>--%>
+    </div>
+</div>
 
 <script>
     $("#socialShare").socialShare({
@@ -66,6 +96,7 @@
     });
     look(${p.id});
     checkFavour(${p.id});
+    initcomment(${p.id});
 </script>
 </body>
 </html>

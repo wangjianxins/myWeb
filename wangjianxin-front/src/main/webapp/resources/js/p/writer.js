@@ -142,7 +142,7 @@ function context(str){
 }
 function goWriter(){
     if($('#user_id').val().length>0){
-        location.href="/p/writer.htm"
+        location.href="comment"
     }else{
         $.alert('请登录');
     }

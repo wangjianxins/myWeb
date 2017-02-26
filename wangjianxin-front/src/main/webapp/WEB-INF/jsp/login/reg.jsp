@@ -17,9 +17,9 @@
     <form id="login" class="current1" method="post">
         <h4><a href="/login.html">Login</a></h4>
         <h2>用户注册</h2>
-        <label>邮箱<input type="text" name="reg_email" id="reg_email" style="width:215px;" /><span>邮箱为空</span></label>
-        <%--<div><h2><a style="cursor:pointer" onclick="sendMa()" id="sendMa">发送验证码</a></h2></div>--%>
-        <%--<label>验证码<input type="text" name="reg_ma" id="reg_ma" style="width:215px;" /><span>输入验证码</span></label>--%>
+        <label>手机号<input type="text" name="reg_mob" id="reg_mob" style="width:215px;" /><span>手机号为空</span></label>
+        <div><h2><a style="cursor:pointer" onclick="sendMa()" id="sendMa">发送验证码</a></h2></div>
+        <label>验证码<input type="text" name="reg_ma" id="reg_ma" style="width:215px;" /><span>输入验证码</span></label>
         <label>密码<input type="password" name="reg_pass" id="reg_pass" /><span>密码为空</span></label>
         <label>昵称<input type="text" name="reg_name" id="reg_name" /><span>昵称为空</span></label>
         <button type="button" onclick="reg()">注册</button>

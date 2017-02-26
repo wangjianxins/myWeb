@@ -20,36 +20,27 @@ function login(){
     })
 }
 function reg(){
-  var email = $('#reg_email').val();
+  var reg_mob = $('#reg_mob').val();
   var pass =   $('#reg_pass').val();
   var name =  $('#reg_name').val();
-//    var ma =  $('#reg_ma').val();
-    if(email.length>0 && pass.length>0 && name.length>0){
-        if(emailCheck(email)){
+    var ma =  $('#reg_ma').val();
+    if(reg_mob.length >0 && pass.length>0 && name.length>0){
             $.ajax({
                 url:"/reg.json",
                 type:"get",
                 data:{
-                    email:$('#reg_email').val(),
-                    pass:$('#reg_pass').val(),
-                    name:$('#reg_name').val()
-//                    ma:$('#reg_ma').val()
+                    mob:reg_mob,
+                    pass:pass,
+                    name:name,
+                    ma:ma
                 },
                 success: function (data) {
                     if(data == 1){
                         swal("注册成功");
-                            $.ajax({
-                                url:"/mail/send.json",
-                                type:"get",
-                                data:{
-                                    email:email,
-                                    type:1
-                                }
-                            })
                         window.location.href="/";
                         return ;
                     }if(data == 98){
-                        swal("此邮箱已被注册");
+                        swal("此手机号已被注册");
                         return ;
                     }if(data == 97){
                         swal("昵称已被用");
@@ -64,9 +55,6 @@ function reg(){
                     }
                 }
             })
-        }else{
-            swal("邮箱不正确哦");
-        }
     }else{
         swal("信息填完整哦");
     }
@@ -74,21 +62,55 @@ function reg(){
 function sendMa(){
     secs = 35;
     $('#sendMa').disabled=true;
-    var email = $('#reg_email').val();
-    if(emailCheck(email)) {
+    var mob = $('#reg_mob').val();
+    if(checkMobile(mob)){
         $.ajax({
-            url:"/mail/send.json",
+            url:"/send/mob.json",
             type:"get",
             data:{
-                email:email,
-                type:2,
+                mob:mob,
                 user_ip:returnCitySN["cip"]
+            },
+            success :function (data){
+                if(data.a == 1){
+                    swal("此手机号已注册");
+                    return false;
+                }else{
+                    if(data.c == 100){
+                        swal("发送成功");
+                        ma = data.b;
+                    }else if(data.c ==102){
+                        swal("手机格式不正确");
+                    }
+                    else if(data.c == 101){
+                        swal("验证失败")
+                    }
+                    else if(data.c == 104){
+                        swal("内容未审核");
+                    }
+                    else if(data.c == 107){
+                        swal("ip限制");
+                    }else if(data == 111){
+                        swal("当前时间段禁止短信发送");
+                    }
+                    else if(data.c == 108){
+                        swal("手机号发送频率持续过高，黑名单屏蔽数日");
+                    }else if(data.c == 120){
+                        swal("系统升级");
+                    }else if(data.c == 106){
+                        swal("网站账户余额不足，加QQ731461008告诉他吧");
+                    }else{
+                        swal("发送失败");
+                    }
+                    for (var i = 1; i <= secs; i++) {
+                        window.setTimeout("update(" + i + ")", i * 1000);
+                    }
+                }
             }
         })
-        for (var i = 1; i <= secs; i++) {
-            window.setTimeout("update(" + i + ")", i * 1000);
-        }
 
+    }else{
+        swal("手机格式不正确");
     }
 }
 function update(num) {
@@ -115,4 +137,12 @@ function emailCheck(obj) {
         return false;
     }
     return true;
+}
+function
+    checkMobile(str) {
+    if(!(/^1[34578]\d{9}$/.test(str))){
+        return false;
+    }else{
+        return true;
+    }
 }

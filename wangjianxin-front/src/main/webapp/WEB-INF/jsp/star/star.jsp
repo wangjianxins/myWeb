@@ -47,5 +47,6 @@
     </section>
 
 </div>
+<script
 </body>
 </html>
